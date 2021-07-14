@@ -1,0 +1,84 @@
+.HomeIllustration{
+    width: 100vw;
+    height: calc(100vh - 6vw);
+}
+
+.Tree1{
+    transform-origin: bottom;
+    animation: Wind 2s linear infinite alternate;
+}
+
+.Tree2{
+    transform-origin: bottom;
+    animation: Wind 2s linear infinite alternate .5s;
+}
+
+.Leaf1{
+    transform-origin: bottom;
+    animation: Wind 2s linear infinite alternate .7s;
+}
+
+.Leaf2{
+    transform-origin: bottom;
+    animation: Wind 2s linear infinite alternate .8s;
+}
+
+.Leaf3{
+    transform-origin: bottom;
+    animation: Wind 2s linear infinite alternate .92s;
+}
+
+.Hair{
+    transform-origin: center;
+    animation: Hair 2s linear infinite alternate .7s;
+}
+
+@keyframes Hair {
+    0%{
+        transform: skewX(-.5deg);
+    }
+    50%{
+        transform: skewX(0);
+    }
+    100%{
+        transform: skewX(.5deg);
+    }
+}
+
+@keyframes Wind {
+    0%{
+        transform: skewX(-2deg);
+    }
+    50%{
+        transform: skewX(0);
+    }
+    100%{
+        transform: skewX(2deg);
+    }
+}
+
+.Cloud1{
+    animation: Cloud1 120s linear infinite;
+}
+
+.Cloud2{
+    animation: Cloud2 90s linear infinite;
+}
+
+@keyframes Cloud1 {
+    0%{
+        transform: translateX(-55%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+@keyframes Cloud2 {
+    0%{
+        transform: translateX(-115%);
+    }
+    100%{
+        transform: translateX(40%);
+    }
+}

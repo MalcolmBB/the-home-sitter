@@ -1,0 +1,115 @@
+.button{
+    all: unset;
+    text-transform: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8vw;
+    cursor: pointer;
+    color: var(--grey);
+    background-image: linear-gradient(var(--pDark), var(--pDark));
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 0% 0%;
+    border-radius: 9999999rem;
+    -webkit-transition: background-size .3s, color .3s;
+    -o-transition: background-size .3s, color .3s;
+    transition: background-size .3s,  color .3s;
+    z-index: 3;
+}
+
+.button *{
+    z-index: 4;
+    pointer-events: none;
+}
+
+.button:hover, .button:focus{
+    background-size: 100% 100%;
+    color: var(--light);
+}
+
+.button::after, .button::before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 99999vw;
+    background: var(--pDark);
+    opacity: 0.0;
+    -webkit-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+}
+
+.button::before{
+    z-index: 1;
+    animation: buttonAnim 3s linear infinite;
+}
+
+.button::after{
+    z-index: 2;
+    animation: buttonAnim 1.8s linear infinite reverse;
+}
+
+.button:hover::before, .button:focus::before{
+    opacity: 0.5;
+}
+
+.button:hover::after, .button:focus::after{
+    opacity: 0.5;
+}
+
+@keyframes buttonAnim {
+    0%{
+        transform: skewX(-5deg) skewY(-5deg) translateX(-0.4vw) translateY(-0.4vh);
+    }
+    25%{
+        transform: skewX(5deg) skewY(-5deg) translateX(-0.4vw) translateY(0.4vh);
+    }
+    50%{
+        transform: skewX(5deg) skewY(5deg) translateX(0.4vw) translateY(0.4vh);
+    }
+    75%{
+        transform: skewX(-5deg) skewY(5deg) translateX(0.4vw) translateY(-0.4vh);
+    }
+    100%{
+        transform: skewX(-5deg) skewY(-5deg) translateX(-0.4vw) translateY(-0.4vh);
+    }
+}
+
+
+.bLogoMain{
+    all: unset;
+    text-transform: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: .5vw;
+    cursor: pointer;
+    color: var(--grey);
+    background: transparent;
+    border-radius: .25rem;
+    transition: color;
+}
+
+.logoMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.logoheader{
+	margin-left: 1rem;
+    font-size: 2rem;
+    text-align: left;
+}
+
+#navlogoimg{
+    display: block;
+    margin: 0 0;
+    fill: var(--grey);
+}

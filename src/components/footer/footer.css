@@ -1,0 +1,123 @@
+:root{
+    --iconSize: 5rem;
+}
+
+.footerContainer{
+    height: auto;
+    width: 100vw;
+    background: var(--light);
+    padding: 1.5rem 3rem;
+    padding-top: 3rem;
+}
+
+.footerDiv{
+    height: auto;
+    width: 100vw;
+    display: flex;
+    gap: 5rem;
+    justify-content: space-around;
+}
+
+.LogoAndLinksContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin-left: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.LegalLinksContainer{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-around;
+}
+
+.DogLogo{
+    width: 6vw;
+    fill: var(--grey);
+    transition-duration: 1s;
+}
+
+.DogLogo:hover, .DogLogo:focus{
+    fill: var(--dark);
+    cursor: pointer;
+}
+
+.MadeBy{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}
+
+.bFacebookFooter{
+    all: unset;
+    color: var(--primary);
+    -webkit-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+
+.bFacebookFooter:hover, .bFacebookFooter:focus{
+    color: var(--pDark);
+}
+
+.bWhatsAppFooter{
+    all: unset;
+    color: #25D366;
+    -webkit-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+
+.bWhatsAppFooter:hover, .bWhatsAppFooter:focus{
+    color: #075E54;
+}
+
+/*Contact styling*/
+.contactContainer{
+    background: var(--light);
+    margin-right: 10vw;
+    margin-bottom: 5rem;
+    padding: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    width: 80vw;
+    border: 2px solid var(--grey);
+    border-radius: 1rem;
+}
+
+.contactContainer > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.detailsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.contactContainer > form > button{
+    align-self: flex-end;
+    margin-right: 5vw;
+    margin-top: 1.5vw;
+    background-color: var(--pDark);
+    color: var(--light);
+    background-image: linear-gradient(var(--primary), var(--primary));
+}
+
+.contactContainer > form > button::before, .contactContainer > form > button::after{
+    background: var(--primary);
+}
+
+.DialogTitle *{
+    font-size: 1.2rem;
+}
+
+.bSubmit{
+    margin-top: 1rem!important;
+    font-size: 1.25rem;
+}

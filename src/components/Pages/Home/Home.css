@@ -1,0 +1,20 @@
+.MainContainer{
+    height: 200vh;
+}
+
+.CarouselContainer{
+    margin-top: 10rem;
+    width: 100vw;
+    height: 60vh;
+    padding: 2.5rem 0;
+    background: var(--pDark);
+    display: flex;
+}
+
+.Image{
+    height: 50vh;
+    max-width: 30vw;
+    border-radius: 1rem;
+    margin: 0 4rem;
+    object-fit: fill;
+}

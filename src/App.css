@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Alice&display=swap");
+
+:root{
+    --primary: hsl(200, 60%, 60%);
+	--pLight: hsl(200, 80%, 90%);
+	--pDark: hsl(200, 40%, 30%);
+	--secondary: hsl(199, 30%, 60%);
+	--sLight: hsl(199, 92%, 92%);
+	--sDark: hsl(199, 25%, 20%);
+    --light: hsl(0, 0%, 100%);
+    --dark: hsl(0, 0%, 0%);
+    --grey: hsl(0, 0%, 35%);
+    font-size: 1vw;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+    background: var(--pLight);
+    font-family: "Alice", serif;
+    font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a{
+    text-decoration: none;
+    color: inherit;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Temp{
+    width: 100%;
+    height: 200vh;
 }

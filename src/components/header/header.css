@@ -1,0 +1,79 @@
+.headerDiv{
+    position: sticky;
+    top: 0;
+    transition: all .8s;
+}
+
+.headerBar{
+    width: 100vw;
+    height: 6vw;
+    background: var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding: .5vw;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    gap: 2rem;
+    margin-right: 1rem;
+}
+
+.bLogoMain{
+    margin-left: 0;
+}
+
+.bLogoMain > a > h2{
+    transition: width .8s;
+    width: 200px;
+}
+
+.bLogoMain > a > svg{
+    transition: width .8s;
+    width: 5.6vw;
+}
+
+
+/*Scrolled*/
+
+.headerScrolled{
+    width: 100vw;
+    height: 4vw;
+    background: var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding: .5vw;
+    z-index: 9999;
+}
+
+.headerScrolled:hover{
+    height: 6vw;
+}
+
+.bLogoMainScrolled > a > h2{
+    transition: width .8s;
+    width: 300px;
+}
+
+.bLogoMainScrolled > a > svg{
+    transition: width .8s;
+    width: 4vw;
+}
+
+
+/* Button styling */
+.bBook{
+    background-color: var(--pDark);
+    color: var(--light);
+    background-image: linear-gradient(var(--primary), var(--primary));
+}
+
+.bBook::before, .bBook::after{
+    background: var(--primary);
+}

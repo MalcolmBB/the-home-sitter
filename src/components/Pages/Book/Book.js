@@ -9,19 +9,42 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import { DateRange } from 'react-date-range';
+import { addDays } from 'date-fns';
 import './Book.css';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function Book(){
     const [service, setService] = useState('houseSit');
 
     const changeService = (event) =>{
         setService(event.target.value);
+        console.log(selectedRange);
     };
+
+    const [selectedRange, setRange] = useState([
+      {
+        startDate: new Date(),
+        endDate: addDays(new Date(), 7),
+        key: 'selection'
+      }
+    ]);
 
     return(
         <div className="BookDiv">
             <Header></Header>
             <div className="BookContainer">
+                <div className="detailsContainer">
+                    <form action="">
+                        <TextField label="Field1"></TextField>
+                        <TextField label="Field2"></TextField>
+                        <TextField label="Field3"></TextField>
+                        <TextField
+                            label="Field4"
+                            select></TextField>
+                    </form>
+                </div>
                 <div className="serviceContainer">
                     <FormControl component="fieldset">
                         <FormLabel className="serviceLabel" component="h2">Please select the main service your require</FormLabel>
@@ -71,13 +94,25 @@ function Book(){
                                         <div className="contentWrap">
                                             <h3>Pet Feeding</h3>
                                             <h5>1 hour • R60/visit</h5>
-                                            <p>To stop by and feed your cats or dogs instead of staying the night. I'd also stay for an hour to cuddle and play with them! </p>
+                                            <p>To stop by and feed your cats or dogs instead of staying the night. I&#39;d also stay for an hour to cuddle and play with them!</p>
                                         </div>
                                     }
                                 />
                             </div>
                         </RadioGroup>
                     </FormControl>
+                </div>
+                <div className="dateContainer">
+                    <h2 className="dateLabel">Please select the date(s) you would like to book for</h2>
+                    <DateRange
+                        className="dateRange"
+                        onChange={item => setRange([item.selection])}
+                        showSelectionPreview={true}
+                        moveRangeOnFirstSelection={false}
+                        ranges={selectedRange}
+                        direction="horizontal"
+                        rangeColors={["var(--primary)"]}
+                    />
                 </div>
             </div>
             <Footer></Footer>

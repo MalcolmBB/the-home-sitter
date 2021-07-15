@@ -25,6 +25,7 @@
     gap: 1rem;
     margin: 5rem;
     padding: 2rem;
+    margin-bottom: 0;
 }
 
 .serviceLabel{
@@ -41,7 +42,7 @@
 
 .serviceOption{
     background: var(--light);
-    box-shadow: .25rem .25rem .5rem var(--pDark);
+    box-shadow: 0 0 30px 0 rgba(46, 87, 107, 0.5);
     border-radius: 1rem;
     padding: 1rem;
     max-width: 30vw;
@@ -63,4 +64,33 @@
 .checked{
     background: var(--pDark);
     color: var(--light);
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.4) inset;
+}
+
+.dateContainer{
+    gap: 1rem;
+    margin: 5rem;
+    padding: 2rem;
+    margin-top: 0;
+}
+
+.dateRange{
+    border-radius: 1rem;
+    font-size: 1rem!important;
+    gap: 2rem;
+    margin: 2rem;
+    box-shadow: 0 0 40px 0 rgba(46, 87, 107, 0.3);
+}
+
+.dateRange *{
+    font-size: 1rem!important;
+}
+
+.rdrDateDisplayWrapper{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.dateLabel{
+    font-size: 2rem!important;
 }

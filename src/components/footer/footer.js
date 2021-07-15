@@ -1,6 +1,4 @@
 import React from 'react';
-import HouseName from './HouseName';
-import MyIcon from '../Icon/MyIcon';
 import Button from '../button/button';
 import Contact from './contact';
 import Doggy from '../Icon/doggy';
@@ -35,7 +33,7 @@ function Footer(){
                 <Contact></Contact>
             </div>
             <div className="MadeBy">
-                <a target="_blank" href="https://malcolmbaatjies.me/#/">Made by Malcolm Baatjies</a>
+                <p>Made with ♥ by <a target="_blank" href="https://malcolmbaatjies.me/#/">Malcolm Baatjies</a></p>
             </div>
             <div className="LegalLinksContainer">
                 <a className="PrivacyPolicy">Privacy Policy</a>

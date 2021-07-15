@@ -32,14 +32,15 @@ function submitButton(props){
 }
 
 function navButton(props){
-    const {value, classes, onClick} = props;
+    const {value, classes, onClick, linkTo} = props;
     return (
-        <button
-            className = {classes}
-            onClick={onClick}
-        >
-            <Link tabIndex="-1" to="/">- {value} -</Link>
-        </button>
+        <Link tabIndex="-1" to={linkTo}>
+            <button
+                className = {classes}
+                onClick={onClick}>
+            - {value} -
+            </button>
+        </Link>
     );
 }
 
@@ -56,7 +57,7 @@ function linkButton(props){
 }
 
 function linkButtonEmpty(props){
-    const {value, classes, linkTo, onClick} = props;
+    const {classes, linkTo, onClick} = props;
     return (
         <button
             className = {classes}

@@ -1,0 +1,66 @@
+/* footer styling */
+.contactContainer{
+    display: none;
+}
+
+.footerDiv{
+    width: auto;
+}
+
+.LogoAndLinksContainer{
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+}
+
+.BookContainer{
+    width: 100vw;
+}
+
+/* booking styling  */
+.serviceContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 5rem;
+    padding: 2rem;
+}
+
+.serviceLabel{
+    all: unset!important;
+    font-size: 2rem!important;
+}
+
+.serviceOptionContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem;
+}
+
+.serviceOption{
+    background: var(--light);
+    box-shadow: .25rem .25rem .5rem var(--pDark);
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 30vw;
+    display: flex;
+    gap: .5rem;
+    transition: all .6s;
+}
+
+.contentWrap > h5{
+    margin-top: .2rem;
+    font-size: .9rem;
+}
+
+.contentWrap > p{
+    margin-top: .5rem;
+    font-size: 1rem;
+}
+
+.checked{
+    background: var(--pDark);
+    color: var(--light);
+}

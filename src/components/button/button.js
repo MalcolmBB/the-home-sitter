@@ -38,7 +38,7 @@ function navButton(props){
             <button
                 className = {classes}
                 onClick={onClick}>
-            - {value} -
+            <span>- {value} -</span>
             </button>
         </Link>
     );
@@ -51,7 +51,7 @@ function linkButton(props){
             className = {classes}
             onClick={onClick}
         >
-            <a tabIndex="-1" href={linkTo}>- {value} -</a>
+            <a tabIndex="-1" href={linkTo}><span>- {value} -</span></a>
         </button>
     );
 }
@@ -91,7 +91,7 @@ function logoButton(props){
                       </path>
                 </svg>
                 <h2 className="logoheader" id="logoheader">
-                    {value}
+                    <span>{value}</span>
                 </h2>
             </a>
         </button>

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Radio from '@material-ui/core/Radio';
@@ -9,18 +10,30 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { DateRange } from 'react-date-range';
 import { addDays } from 'date-fns';
+import Button from '../../button/button';
 import './Book.css';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { differenceInDays } from 'date-fns'
 
 function Book(){
+    const [details, setDetails] = useState(
+        {
+            name: "John Doe",
+            email: "johndoe@email.com",
+            cellNumber: "0123456789",
+            preferredContact: "whatsapp"
+        }
+    );
+
     const [service, setService] = useState('houseSit');
 
     const changeService = (event) =>{
         setService(event.target.value);
-        console.log(selectedRange);
     };
 
     const [selectedRange, setRange] = useState([
@@ -31,18 +44,114 @@ function Book(){
       }
     ]);
 
+    const [numberOfDays, setDays] = useState(differenceInDays(selectedRange[0].endDate, selectedRange[0].startDate) + 1);
+
+    const handleDateChange = (item) => {
+        setRange([item.selection]);
+        setDays(differenceInDays([item.selection][0].endDate, [item.selection][0].startDate) + 1);
+    }
+
+    const preferredContact = [
+        {
+            value: 'email',
+            label: "Email",
+        },
+        {
+            value: 'whatsapp',
+            label: "WhatsApp",
+        }
+    ]
+
+    const [numHours, setHours] = useState(1);
+
+    const [estimatedPrice, setPrice] = useState(200);
+
+    const calculatePrice = () => {
+        switch (service) {
+            case "houseSit":
+                setPrice(200*numberOfDays);
+                break;
+            case "dogWalk":
+                setPrice(100*numberOfDays);
+                break;
+            case "petSit":
+                setPrice(70*numHours*numberOfDays);
+                break;
+            case "petFeeding":
+                setPrice(60*numHours*numberOfDays);
+                break;
+            default:
+                setPrice(200);
+        }
+    }
+
+    useEffect(() => {
+        console.log("Changed");
+        calculatePrice();
+    });
+
+
     return(
         <div className="BookDiv">
             <Header></Header>
             <div className="BookContainer">
                 <div className="detailsContainer">
-                    <form action="">
-                        <TextField label="Field1"></TextField>
-                        <TextField label="Field2"></TextField>
-                        <TextField label="Field3"></TextField>
-                        <TextField
-                            label="Field4"
-                            select></TextField>
+                    <h2 className="detailsLabel">Please enter your personal details</h2>
+                    <form
+                        className="detailsForm"
+                        action="">
+                        <div className="detailsInput">
+                            <TextField
+                                className="nameInput"
+                                label="Name"
+                                placeholder="John Doe"
+                                required
+                                fullWidth
+                                onChange={(event) => (setDetails({ ...details, name : event.target.value}))}
+                            ></TextField>
+                        </div>
+                        <div className="detailsInput">
+                            <TextField
+                                className="emailInput"
+                                label="Email address"
+                                placeholder="johndoe@email.com"
+                                type='email'
+                                required
+                                fullWidth
+                                onChange={(event) => (setDetails({ ...details, email : event.target.value}))}
+                            ></TextField>
+                        </div>
+                        <div className="detailsInput">
+                            <TextField
+                                className="numberInput"
+                                label="Cellphone number"
+                                placeholder="0123456789"
+                                type="tel"
+                                inputProps={{ minLength: 10, maxLength:10}}
+                                required
+                                fullWidth
+                                onChange={(event) => (setDetails({ ...details, cellNumber : event.target.value}))}
+                            ></TextField>
+                        </div>
+                        <div className="detailsInput">
+                            <TextField
+                                className="contactMethodInput"
+                                label="Preferred contact method"
+                                select
+                                required
+                                fullWidth
+                                onChange={(event) => (setDetails({ ...details, preferredContact : event.target.value}))}
+                            >
+                                {preferredContact.map((option) => (
+                                    <MenuItem
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </div>
                     </form>
                 </div>
                 <div className="serviceContainer">
@@ -104,15 +213,61 @@ function Book(){
                 </div>
                 <div className="dateContainer">
                     <h2 className="dateLabel">Please select the date(s) you would like to book for</h2>
+                    <br></br>
+                    <h4 className="dateHint">{service ==="houseSit" ? "Please note: The end date is included in the price calculation" : ""}</h4>
                     <DateRange
                         className="dateRange"
-                        onChange={item => setRange([item.selection])}
+                        onChange={item => handleDateChange(item)}
                         showSelectionPreview={true}
                         moveRangeOnFirstSelection={false}
                         ranges={selectedRange}
                         direction="horizontal"
                         rangeColors={["var(--primary)"]}
                     />
+                    <div className="dateRangeNumber detailsInput">
+                        <h3 className="dateRangeNumberLabel">{service ==="houseSit" ? "Number of nights" : "Number of days"}</h3>
+                        <Input
+                            className="estimatedPriceDisplay"
+                            label="Number of days"
+                            disabled
+                            value={numberOfDays}
+                        ></Input>
+                    </div>
+                </div>
+                <div className={service ==="houseSit" || service==="dogWalk" ? "timeContainer noShowTime" : "timeContainer"}>
+                    <h2 className="timeLabel">Please enter how many hours you require services for</h2>
+                    <div className="detailsInput timeInputContainer">
+                        <TextField
+                            className="timeInput"
+                            label="Number of hours"
+                            placeholder="1"
+                            type='number'
+                            inputProps={{max:10, min:1}}
+                            required
+                            fullWidth
+                            onChange={(event) => (setHours(event.target.value))}
+                        ></TextField>
+                    </div>
+                </div>
+                <div className="submitContainer">
+                    <h2 className="submitLabel">Please see the estimated price below and confirm the booking</h2>
+                    <div className="estimatedPriceContainer detailsInput">
+                        <h3 className="estimatedPriceLabel">*Estimated price:</h3>
+                        <Input
+                            className="estimatedPriceDisplay"
+                            label="*Estimated price:"
+                            disabled
+                            startAdornment={<InputAdornment position="start">R</InputAdornment>}
+                            value={estimatedPrice}
+                        ></Input>
+                    </div>
+                    <h4 className="priceEstimateNotice">*Please note that the estimated price provided may change.</h4>
+                    <Button
+                        type="Submit"
+                        classes="button bSubmitBooking"
+                        value="Confirm booking"
+                        onClick={() => console.log(selectedRange, numberOfDays)}
+                    ></Button>
                 </div>
             </div>
             <Footer></Footer>

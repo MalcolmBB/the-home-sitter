@@ -19,11 +19,51 @@
 }
 
 /* booking styling  */
+
+/* Personal Details Styling */
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 5rem;
+    padding: 2rem;
+    margin-bottom: 0;
+}
+
+.detailsLabel{
+    font-size: 2rem;
+}
+
+.detailsForm{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem;
+}
+
+.detailsInput{
+    background: var(--light);
+    padding: 2rem;
+    padding-top: 1rem;
+    max-width: 30vw;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px 0 rgba(46, 87, 107, 0.5);
+}
+
+.detailsForm *{
+    font-family: "Alice", serif!important;
+    color: var(--dark)!important;
+    font-size: 1.1rem!important;
+}
+
+
+/* Service Details Styling */
 .serviceContainer{
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin: 5rem;
+    margin-top: 0;
     padding: 2rem;
     margin-bottom: 0;
 }
@@ -67,11 +107,11 @@
     box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.4) inset;
 }
 
+/* Date Styling */
 .dateContainer{
     gap: 1rem;
-    margin: 5rem;
+    margin:0 5rem;
     padding: 2rem;
-    margin-top: 0;
 }
 
 .dateRange{
@@ -93,4 +133,86 @@
 
 .dateLabel{
     font-size: 2rem!important;
+}
+
+.dateRangeNumber{
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+/* Time Styling */
+.timeContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 5rem;
+    margin-top: 0;
+    padding: 2rem;
+    margin-bottom: 0;
+}
+
+.timeLabel{
+    font-size:2rem;
+}
+
+.timeInput{
+    font-family: "Alice", serif!important;
+    color: var(--dark)!important;
+    font-size: 1.1rem!important;
+}
+
+.timeInputContainer{
+    margin: 2rem;
+}
+
+.noShowTime{
+    display: none;
+}
+
+/* Price Styling */
+.submitContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 5rem;
+    padding: 2rem;
+}
+
+.submitLabel{
+    font-size: 2rem;
+}
+
+.estimatedPriceContainer{
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.priceEstimateNotice{
+    margin: 2rem;
+    margin-top: -2rem;
+}
+
+.bSubmitBooking{
+    align-self: flex-end;
+    font-size: 2rem;
+    background: var(--pDark);
+    color: var(--light);
+    background-image: linear-gradient(var(--primary), var(--primary));
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 0% 0%;
+}
+
+.bSubmitBooking:hover, .bSubmitBooking:focus{
+    background-size: 100% 100%;
+}
+
+.bSubmitBooking:before, .bSubmitBooking:after{
+    background: var(--primary);
 }

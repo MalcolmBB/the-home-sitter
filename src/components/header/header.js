@@ -35,6 +35,7 @@ function Header(){
     const [isScrolled, setScrolled] = useState(false);
 
     const toggleScrolled = () => {
+        // console.log($("headerDiv").position().top);
         if (window.scrollY >= 1080){
             setScrolled(true);
         }
@@ -47,6 +48,7 @@ function Header(){
 
     const clickThing = () => {
         // $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
+        window.scroll({top: 0, left: 0, behavior: 'smooth'})
         document.activeElement.blur();
     };
 
@@ -56,7 +58,7 @@ function Header(){
                 <Button
                     type="LogoMain"
                     classes={!isScrolled ? "bLogoMain header" : "bLogoMainScrolled bLogoMain header"}
-                    linkTo={'/Home'}
+                    linkTo={"/"}
                     value={"The HomeSitter"}
                     onClick={clickThing}
                 ></Button>

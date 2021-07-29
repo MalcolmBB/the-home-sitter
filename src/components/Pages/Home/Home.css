@@ -20,9 +20,10 @@
 
 .Image{
     height: 25vw;
+    width: 30vw;
     max-width: 30vw;
     border-radius: 1rem;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 /* .CarouselContainer .slick-slide{
@@ -39,4 +40,19 @@
 
 .homeCard:hover, .homeCard:focus{
   cursor: pointer;
+}
+
+
+/* Swiper Styling */
+.CarouselContainer .swiper-slide{
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+    transition: all 2s;
+    opacity: 0.6;
+    transform: scale(0.8);
+}
+
+.CarouselContainer .swiper-slide-active{
+    transform: scale(1);
+    opacity: 1;
 }

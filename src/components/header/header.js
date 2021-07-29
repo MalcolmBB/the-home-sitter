@@ -19,9 +19,9 @@ const headerButtonsList = [
     },
     {
         type: "Navigation",
-        classes: "button bOurTeam header",
-        linkTo: "/Our_Team",
-        value: "Our Team"
+        classes: "button bGallery header",
+        linkTo: "/Gallery",
+        value: "Gallery"
     }
     ,
     {

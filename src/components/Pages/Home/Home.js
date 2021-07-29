@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react';
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import HomeIllustration from './HomeIllustration.js';
-import Slider from 'react-slick';
-import Carousel from 'react-material-ui-carousel';
 import {Image} from 'cloudinary-react';
 import axios from 'axios';
 import TestText from '../Testimonials/TestText';
 import Card from '../../Card/Card';
 import './Home.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-require('react-img-carousel/lib/carousel.css');
+// Swiper initialisation
+import SwiperCore, {Autoplay} from 'swiper';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/swiper.scss';
+SwiperCore.use([Autoplay]);
 
 function Home() {
     const [gallery, setGallery] = useState(['dd']);
@@ -25,69 +25,53 @@ function Home() {
         });
     }, [])
 
-    // const settings1  = {
-    //   dots: false,
-    //   infinite: true,
-    //   slidesToShow: 3,
-    //   slidesToScroll: 1,
-    //   autoplay: true,
-    //   autoplaySpeed: 0,
-    //   speed: 5000,
-    //   cssEase:"linear",
-    //   pauseOnHover: false,
-    //   variableWidth: true,
-    //   draggable: false,
-    //   arrows: false
-    // };
-
-    var settings1  = {
-      dots: true,
-      fade: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-    };
-
-    const settings2 = {
-      dots: false,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 0,
-      speed: 10000,
-      cssEase:"linear",
-      pauseOnHover: true,
-      arrows: false,
-      variableWidth: true
-    };
-
     return (<div className="Home div">
         <HomeIllustration class="HomeIllustration"></HomeIllustration>
         <Header></Header>
         <div className="MainContainer">
             <div className="CarouselContainer">
                 <h2 className="CarouselLabel">Gallery</h2>
-                <Carousel
-                    timeout="1000"
+                <Swiper
+                    spaceBetween={0}
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    speed={2500}
+                    loop={true}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false
+                    }}
                     >
-                    {gallery.map(data => (
-                        <Image cloudName="homesitterza" publicId={data.public_id} className="Image">
-                        </Image>
+                    {gallery.map((data, i) => (
+                        <SwiperSlide
+                            style={{width: "auto"}}>
+                            <Image key={i} cloudName="homesitterza" publicId={data.public_id} className="Image">
+                            </Image>
+                        </SwiperSlide>
                     ))}
-                </Carousel>
+                </Swiper>
             </div>
             <div className="CarouselCardContainer">
-                <Slider {...settings2}>
+                <Swiper
+                    spaceBetween={30}
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    speed={2500}
+                    loop={true}
+                    autoplay={{
+                        delay: 5000
+                    }}
+                    >
                     {TestText.map(data => (
-                            <Card
-                                classes="Card homeCard"
-                                date={data.date}
-                                summary={data.summary}
-                            ></Card>
+                            <SwiperSlide style={{ width: "auto"}}>
+                                <Card
+                                    classes="Card homeCard"
+                                    date={data.date}
+                                    summary={data.summary}
+                                ></Card>
+                            </SwiperSlide>
                     ))}
-                </Slider>
+                </Swiper>
             </div>
         </div>
         <Footer></Footer>

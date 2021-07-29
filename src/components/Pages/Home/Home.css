@@ -34,5 +34,9 @@
 }
 
 .homeCard{
-    width: 100vw;
+    /* width: 100vw; */
+}
+
+.homeCard:hover, .homeCard:focus{
+  cursor: pointer;
 }

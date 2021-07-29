@@ -55,13 +55,12 @@ function Home() {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 1500,
-      speed: 2500,
+      autoplaySpeed: 0,
+      speed: 10000,
       cssEase:"linear",
       pauseOnHover: true,
       arrows: false,
-      variableWidth: true,
-      centerMode: true
+      variableWidth: true
     };
 
     return (<div className="Home div">
@@ -71,8 +70,7 @@ function Home() {
             <div className="CarouselContainer">
                 <h2 className="CarouselLabel">Gallery</h2>
                 <Carousel
-                    timeout=1000
-
+                    timeout="1000"
                     >
                     {gallery.map(data => (
                         <Image cloudName="homesitterza" publicId={data.public_id} className="Image">

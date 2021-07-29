@@ -25,10 +25,14 @@
     object-fit: fill;
 }
 
-.CarouselContainer .slick-slide{
+/* .CarouselContainer .slick-slide{
     margin: 0 2rem;
-}
+} */
 
 .CarouselCardContainer .slick-slide{
     margin: 0 .6rem;
+}
+
+.homeCard{
+    width: 100vw;
 }

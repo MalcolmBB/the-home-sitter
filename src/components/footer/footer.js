@@ -4,7 +4,9 @@ import Contact from './contact';
 import Doggy from '../Icon/doggy';
 import './footer.css';
 
-function Footer(){
+function Footer(props){
+    const {pageName} = props;
+    console.log(pageName);
 
     const clickThing = () => {
         // $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
@@ -14,8 +16,8 @@ function Footer(){
 
     return (
         <div className="footerContainer">
-            <div className="footerDiv">
-                <div className="LogoAndLinksContainer">
+            <div className={pageName === "Book" ? "footerDiv bookFooter" : "footerDiv"}>
+                <div className={pageName === "Book" ? "LogoAndLinksContainer bookLinks" : "LogoAndLinksContainer"}>
                     <a onClick={clickThing}>
                         <Doggy class="DogLogo"></Doggy>
                     </a>

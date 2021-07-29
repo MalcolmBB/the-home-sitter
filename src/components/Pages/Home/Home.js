@@ -3,6 +3,7 @@ import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import HomeIllustration from './HomeIllustration.js';
 import Slider from 'react-slick';
+import Carousel from 'react-material-ui-carousel';
 import {Image} from 'cloudinary-react';
 import axios from 'axios';
 import TestText from '../Testimonials/TestText';
@@ -24,25 +25,34 @@ function Home() {
         });
     }, [])
 
-    const settings1  = {
-      dots: false,
+    // const settings1  = {
+    //   dots: false,
+    //   infinite: true,
+    //   slidesToShow: 3,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   autoplaySpeed: 0,
+    //   speed: 5000,
+    //   cssEase:"linear",
+    //   pauseOnHover: false,
+    //   variableWidth: true,
+    //   draggable: false,
+    //   arrows: false
+    // };
+
+    var settings1  = {
+      dots: true,
+      fade: true,
       infinite: true,
+      speed: 500,
       slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: false,
-      autoplaySpeed: 0,
-      speed: 5000,
-      cssEase:"linear",
-      pauseOnHover: false,
-      variableWidth: true,
-      draggable: false,
-      arrows: false
+      slidesToScroll: 3,
     };
 
     const settings2 = {
       dots: false,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 1500,
@@ -60,19 +70,21 @@ function Home() {
         <div className="MainContainer">
             <div className="CarouselContainer">
                 <h2 className="CarouselLabel">Gallery</h2>
-                <Slider
-                    {...settings1}
+                <Carousel
+                    timeout=1000
+
                     >
                     {gallery.map(data => (
                         <Image cloudName="homesitterza" publicId={data.public_id} className="Image">
                         </Image>
                     ))}
-                </Slider>
+                </Carousel>
             </div>
             <div className="CarouselCardContainer">
                 <Slider {...settings2}>
                     {TestText.map(data => (
                             <Card
+                                classes="Card homeCard"
                                 date={data.date}
                                 summary={data.summary}
                             ></Card>

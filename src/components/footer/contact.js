@@ -112,7 +112,7 @@ class Contact extends React.Component {
             <div className="contactContainer">
                 <h2 className="contactHeader">Please enter your details and message below</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="detailsContainer">
+                    <div className="contactDetailsContainer">
                     <TextField
                         inputProps={{style:{fontSize:"var(--inputFontSize)"}}}
                         InputLabelProps={{style:{fontSize:"var(--inputFontSize)"}}}
@@ -123,6 +123,7 @@ class Contact extends React.Component {
                         fullWidth
                         variant="standard"
                         autoComplete="name"
+                        placeholder="John Doe"
                         onChange={(e) => {
                             if (e.target.value === ""){
                                 this.setState({name:e.target.value, nameError:nameErrorConst, defaultName:e.target.value})
@@ -145,6 +146,7 @@ class Contact extends React.Component {
                         label="Email"
                         fullWidth
                         variant="standard"
+                        placeholder="johndoe@email.com"
                         onChange={(e) => {
                             this.setState({defaultEmail:e.target.value})
                         }}

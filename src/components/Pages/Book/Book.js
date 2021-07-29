@@ -270,7 +270,7 @@ function Book(){
                     ></Button>
                 </div>
             </div>
-            <Footer></Footer>
+            <Footer pageName="Book"></Footer>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import ReactDOM from 'react-dom';
 import Button from '../button/button';
 import $ from 'jquery';
 import "./header.css"
@@ -35,8 +36,7 @@ function Header(){
     const [isScrolled, setScrolled] = useState(false);
 
     const toggleScrolled = () => {
-        // console.log($("headerDiv").position().top);
-        if (window.scrollY >= 1080){
+        if (($(".headerDiv")[0].getBoundingClientRect().top === 0) && (window.scrollY >= window.innerHeight*0.06)){
             setScrolled(true);
         }
         else {

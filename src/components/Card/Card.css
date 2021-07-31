@@ -2,7 +2,7 @@
     background: var(--light);
     color: var(--dark);
     padding: 2rem;
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 2rem;
 }
 
 .Card > h3{

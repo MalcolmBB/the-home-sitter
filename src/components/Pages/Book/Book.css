@@ -16,6 +16,11 @@
 
 .BookContainer{
     width: 100vw;
+    color: var(--pDark);
+}
+
+.BookContainer h2{
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
 }
 
 /* booking styling  */
@@ -52,7 +57,7 @@
 
 .detailsForm *{
     font-family: "Alice", serif!important;
-    color: var(--dark)!important;
+    color: var(--pDark)!important;
     font-size: 1.1rem!important;
 }
 
@@ -71,6 +76,7 @@
 .serviceLabel{
     all: unset!important;
     font-size: 2rem!important;
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light)!important;
 }
 
 .serviceOptionContainer{

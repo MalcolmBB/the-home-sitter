@@ -28,12 +28,12 @@
     margin-left: 0;
 }
 
-.bLogoMain > a > h2{
+.bLogoMain > h2{
     transition: width .8s;
-    width: 200px;
+    width: 11vw;
 }
 
-.bLogoMain > a > svg{
+.bLogoMain > svg{
     transition: width .8s;
     width: 5.6vw;
 }
@@ -57,16 +57,23 @@
     height: 6vw;
 }
 
-.bLogoMainScrolled > a > h2{
+.bLogoMainScrolled > h2{
     transition: width .8s;
-    width: 300px;
+    width: 16vw;
 }
 
-.bLogoMainScrolled > a > svg{
+.bLogoMainScrolled > svg{
     transition: width .8s;
     width: 4vw;
 }
 
+.headerScrolled:hover .navlogoimg{
+    width: 5.6vw;
+}
+
+.headerScrolled:hover .logoheader{
+    width: 11vw;
+}
 
 /* Button styling */
 .bBook{

@@ -58,7 +58,7 @@ function Header(){
                 <Button
                     type="LogoMain"
                     classes={!isScrolled ? "bLogoMain header" : "bLogoMainScrolled bLogoMain header"}
-                    linkTo={"/"}
+                    linkTo={"/Home"}
                     value={"The HomeSitter"}
                     onClick={clickThing}
                 ></Button>

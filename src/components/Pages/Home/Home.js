@@ -51,8 +51,7 @@ function Home() {
             <div className="CarouselContainer">
                 <h2 className="CarouselLabel">Gallery</h2>
                 <Swiper
-                    spaceBetween={0}
-                    slidesPerView={3}
+                    slidesPerView="auto"
                     centeredSlides={true}
                     speed={2500}
                     loop={true}
@@ -69,8 +68,16 @@ function Home() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                <Button
+                    type="Navigation"
+                    classes="button bGalleryMain"
+                    linkTo="/Gallery"
+                    value="View more!"
+                    onClick={clickThing}
+                ></Button>
             </div>
             <div className="CarouselCardContainer">
+                <h2 className="TestimonialCarouselLabel">Testimonial summaries</h2>
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={3}

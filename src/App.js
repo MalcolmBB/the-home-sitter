@@ -1,7 +1,8 @@
 import React from 'react';
 import {HashRouter as Router,
         Route,
-        Switch} from 'react-router-dom';
+        Switch,
+        Redirect} from 'react-router-dom';
 import './App.css';
 
 //Page imports
@@ -13,7 +14,8 @@ function App() {
       <Router basename={"/"}>
           <React.Fragment>
               <Switch>
-                  <Route path="/" exact component={Home}/>
+                  <Redirect exact from="/" to="Home"/>
+                  <Route path="/Home" exact component={Home}/>
                   <Route path="/Book" exact component={Book}/>
               </Switch>
           </React.Fragment>

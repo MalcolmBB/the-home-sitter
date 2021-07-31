@@ -106,10 +106,11 @@
 	margin-left: 1rem;
     font-size: 2rem;
     text-align: left;
+    color: var(--pDark);
 }
 
 #navlogoimg{
     display: block;
     margin: 0 0;
-    fill: var(--grey);
+    fill: var(--pDark);
 }

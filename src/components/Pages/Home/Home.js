@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import Button from "../../button/button.js";
 import HomeIllustration from './HomeIllustration.js';
 import {Image} from 'cloudinary-react';
 import axios from 'axios';
@@ -25,8 +26,26 @@ function Home() {
         });
     }, [])
 
+    const clickThing = () => {
+        // $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
+        window.scroll({top: 0, left: 0, behavior: 'smooth'})
+        document.activeElement.blur();
+    };
+
     return (<div className="Home div">
-        <HomeIllustration class="HomeIllustration"></HomeIllustration>
+        <div className="IllustrationContainer">
+            <HomeIllustration class="HomeIllustration"></HomeIllustration>
+            <div className="CTAContainer">
+                <h1 className="LandingHeader">I'll take care of your pets and your home!</h1>
+                <Button
+                    type="Navigation"
+                    classes="button bBookLanding"
+                    linkTo="/Book"
+                    value="Book a homesitter now!!"
+                    onClick={clickThing}
+                ></Button>
+            </div>
+        </div>
         <Header></Header>
         <div className="MainContainer">
             <div className="CarouselContainer">

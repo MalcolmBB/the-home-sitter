@@ -1,6 +1,10 @@
 .HomeIllustration{
     width: 100%;
-    height: calc(100vh - 6vw);
+    height: 100vh;
+}
+
+.HomeIllustration *{
+    transform: translateX(-10%) scale(0.7);
 }
 
 .Tree1{
@@ -35,25 +39,25 @@
 
 @keyframes Hair {
     0%{
-        transform: skewX(-.5deg);
+        transform: translateX(-10%) scale(0.7) skewX(-.5deg);
     }
     50%{
-        transform: skewX(0);
+        transform: translateX(-10%) scale(0.7) skewX(0);
     }
     100%{
-        transform: skewX(.5deg);
+        transform: translateX(-10%) scale(0.7) skewX(.5deg);
     }
 }
 
 @keyframes Wind {
     0%{
-        transform: skewX(-2deg);
+        transform: translateX(-10%) scale(0.7) skewX(-2deg);
     }
     50%{
-        transform: skewX(0);
+        transform: translateX(-10%) scale(0.7) skewX(0);
     }
     100%{
-        transform: skewX(2deg);
+        transform: translateX(-10%) scale(0.7) skewX(2deg);
     }
 }
 

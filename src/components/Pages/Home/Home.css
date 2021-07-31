@@ -56,3 +56,9 @@
     transform: scale(1);
     opacity: 1;
 }
+
+
+/* Illustration styling */
+.IllustrationContainer{
+    position: relative;
+}

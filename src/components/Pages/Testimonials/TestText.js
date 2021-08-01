@@ -8,7 +8,7 @@ const TestText = [
     },
     {
         type:"Empty",
-        date:"Unknown",
+        date:"Unknown Date",
         name:"Unknown",
         summary: "Julia was an absolute saving grace for us.",
         paragraph:["Julia was an absolute saving grace for us. Our two kitties are like our children and she took care of them as if they were her own. Not only did she come in and feed, twice a day; she also played with them and sent us the most gorgeous pictures of our fur babies. Julia is very reasonably priced for the type of care she provides - you will be able to go away with peace of mind with her as your pet/house sitter!"]
@@ -29,7 +29,7 @@ const TestText = [
     },
     {
         type:"Empty",
-        date:"Unknown",
+        date:"Unknown Date",
         name:"Unknown",
         summary:"I can highly recommend Julia for pet and house sitting.",
         paragraph:["I can highly recommend Julia for pet and house sitting. Julia house sat(and looked after my 4 fur children for me) on several occasions and each time it was really great - I knew my animals were in safe hands(2 cars and 2 dogs - all super needy and my cocker spaniel is quite particular and difficult!)","\n I always came home to happy pets and my house exactly the way I left it. She is so lovely, professional and my dogs adored her! She took them on a long walk every day and treated them like her own. My dogs are high maintenance and she managed very well with them and they were always happy to see her.", "\n Julia kept me up to date regularly and managed perfectly with looking after my house and pets! She is reliable, trustworthy and friendly"]

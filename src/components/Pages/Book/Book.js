@@ -86,7 +86,6 @@ function Book(){
     }
 
     useEffect(() => {
-        console.log("Changed");
         calculatePrice();
     });
 

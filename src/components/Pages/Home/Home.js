@@ -17,11 +17,9 @@ SwiperCore.use([Autoplay]);
 
 function Home() {
     const [gallery, setGallery] = useState(['dd']);
-    console.log("this is gallery", gallery);
 
     useEffect(() => {
         axios.get('https://res.cloudinary.com/homesitterza/image/list/HomeSitter.json').then(res => {
-            console.log(res.data.resources);
             setGallery(res.data.resources);
         });
     }, [])
@@ -41,7 +39,7 @@ function Home() {
                     type="Navigation"
                     classes="button bBookLanding"
                     linkTo="/Book"
-                    value="Book a homesitter now!!"
+                    value="Book a homesitter now!"
                     onClick={clickThing}
                 ></Button>
             </div>
@@ -85,7 +83,9 @@ function Home() {
                     speed={2500}
                     loop={true}
                     autoplay={{
-                        delay: 5000
+                        delay: 5000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true
                     }}
                     >
                     {TestText.map(data => (
@@ -94,6 +94,7 @@ function Home() {
                                     classes="Card homeCard"
                                     date={data.date}
                                     summary={data.summary}
+                                    paragraph={data.paragraph}
                                 ></Card>
                             </SwiperSlide>
                     ))}

@@ -1,0 +1,18 @@
+.GalleryHeader{
+    color: var(--pDark);
+    margin: -1rem 1rem 1rem 3rem;
+    font-size: 4rem;
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
+}
+
+.GalleryContainer{
+    margin-top: 5rem;
+    padding: 1rem;
+}
+
+.GalleryImage{
+    margin: 1rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    max-width: 30vw;
+}

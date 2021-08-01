@@ -1,0 +1,33 @@
+.cardContainer{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.TestimonialsContainer{
+    margin-top: 5rem;
+}
+
+.TestimonialsHeader{
+    color: var(--pDark);
+    margin: -1rem 1rem 1rem 3rem;
+    font-size: 4rem;
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
+}
+
+.Dialog .MuiDialog-paper{
+    border-radius: 1rem!important;
+    padding: 1rem;
+    font-family: "Alice", serif!important;
+    font-size: 1.1rem!important;
+    line-height: calc(1.1rem * 1.6);
+}
+
+.Dialog *{
+    font-family: "Alice", serif!important;
+}
+
+.dialogNameHeader{
+    font-size: 2rem!important;
+}

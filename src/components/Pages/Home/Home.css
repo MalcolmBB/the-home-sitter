@@ -1,9 +1,6 @@
 :root{
     --imagePadding: 2.5rem;
 }
-.MainContainer{
-    height: 200vh;
-}
 
 /* Home gallery styling */
 .CarouselContainer{
@@ -41,7 +38,7 @@
 
 /* Home testimonial styling */
 .CarouselCardContainer{
-    margin-top: 10rem;
+    margin: 10rem 0;
     width: 100vw;
     padding: 2.5rem 0;
     /* background: var(--pDark); */
@@ -49,22 +46,49 @@
 
 .TestimonialCarouselLabel{
     color: var(--pDark);
-    margin: -1rem 1rem 1rem 3rem;
+    margin: -6rem 1rem 4rem 3rem;
     font-size: 4rem;
     text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
 }
 
+.CarouselCardContainer .swiper-slide .homeCard{
+    transition: all 1.6s ease;
+}
+
+.CarouselCardContainer .swiper-slide-active .homeCard{
+    background: var(--pDark);
+    color: var(--light);
+}
+
+.CarouselCardContainer .swiper-slide .homeDisplayMore{
+    transition: all 1.6s ease;
+    padding: 2rem;
+    margin-top: -2rem;
+    padding-top: 4rem;
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+.CarouselCardContainer .swiper-slide-active .homeDisplayMore{
+    transition: all 1.6s ease 1.6s;
+    transform: scaleY(1);
+    padding: 2rem;
+    margin-top: -2rem;
+    padding-top: 4rem;
+}
+
 .homeCard{
+    box-shadow: 0 0 30px 0 rgba(46, 87, 107, 0.5);
     /* width: 100vw; */
 }
 
-.homeCard:hover, .homeCard:focus{
-  cursor: pointer;
+.homeDisplayMore{
+    box-shadow: 0 0 30px 0 rgba(46, 87, 107, 0.5);
+    /* width: 100vw; */
 }
 
-
 /* Swiper Styling */
-.CarouselContainer .swiper-container{
+.swiper-container{
     overflow-x: hidden!important;
     overflow: visible!important;
 }

@@ -6,7 +6,6 @@ import './footer.css';
 
 function Footer(props){
     const {pageName} = props;
-    console.log(pageName);
 
     const clickThing = () => {
         // $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})

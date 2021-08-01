@@ -1,28 +1,38 @@
 import React from 'react';
+import Clamp from 'react-multiline-clamp';
 import './Card.css';
 
-function Card({type, date, summary, paragraph, classes = "Card", animKey}){
-if (type === "Empty"){
-        classes += " Empty"
-        return (
+// {paragraph.map((par, key) => (
+// <p key={key} style={{whiteSpace:"pre-line",}}>
+//     {par}
+// </p>
+// ))}
 
-                <div className={classes}>
-                    <h4>{date}</h4>
+function Card({type, date, name, summary, paragraph, classes = "Card", onClick}){
+if (type === "TestPage"){
+        classes += " TestPage"
+        return (
+                <div className={classes} onClick={onClick}>
+                    <h4 className="nameHeader">{name}</h4>
+                    <h5 className="dateHeader">{date}</h5>
                         <div>
-                            {paragraph.map((par, key) => (
-                            <p key={key} style={{whiteSpace:"pre-line",}}>
-                                {par}
-                            </p>
-                            ))}
+                            <p>{summary}</p>
                         </div>
                 </div>
         )
     }
     return (
-            <div className={classes}>
-                <h4>{date}</h4>
-                <div>
-                    <p>{summary}</p>
+            <div className="homeDisplayCard">
+                <div className={classes}>
+                    <h4>{date}</h4>
+                    <div>
+                        <p>{summary}</p>
+                    </div>
+                </div>
+                <div className="homeDisplayMore">
+                    <Clamp lines={5}>
+                        <p>{paragraph}</p>
+                    </Clamp>
                 </div>
             </div>
     )

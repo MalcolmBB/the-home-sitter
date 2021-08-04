@@ -35,6 +35,15 @@
     margin-top: 4rem;
 }
 
+.bTestimonialsMain{
+    font-size: 1.3rem;
+    border: 0.1rem solid var(--pDark);
+    color: var(--pDark);
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 4rem;
+}
+
 
 /* Home testimonial styling */
 .CarouselCardContainer{

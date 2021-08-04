@@ -35,7 +35,7 @@ if (type === "TestPage"){
     return (
             <div className="homeDisplayCard">
                 <div className={classes}>
-                    <h4>{date}</h4>
+                    <h4>{name}</h4>
                     <div>
                         <p>{summary}</p>
                     </div>

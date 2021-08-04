@@ -33,6 +33,11 @@
     justify-content: space-around;
 }
 
+.LegalLinksContainer *{
+    min-width: 18vw;
+    text-align: center;
+}
+
 .DogLogo{
     width: 6vw;
     fill: var(--grey);

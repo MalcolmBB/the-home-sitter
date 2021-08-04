@@ -92,13 +92,20 @@ function Home() {
                             <SwiperSlide style={{ width: "auto"}}>
                                 <Card
                                     classes="Card homeCard"
-                                    date={data.date}
+                                    name={data.name}
                                     summary={data.summary}
                                     paragraph={data.paragraph}
                                 ></Card>
                             </SwiperSlide>
                     ))}
                 </Swiper>
+                <Button
+                    type="Navigation"
+                    classes="button bTestimonialsMain"
+                    linkTo="/Testimonials"
+                    value="View more!"
+                    onClick={clickThing}
+                ></Button>
             </div>
         </div>
         <Footer></Footer>

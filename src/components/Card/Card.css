@@ -21,6 +21,11 @@
     align-self: flex-end;
 }
 
+.homeCard > h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem ;
+}
+
 .homeDisplayMore{
     background: var(--light);
     border-radius: 0 0 2rem 2rem;

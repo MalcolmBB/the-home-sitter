@@ -1,3 +1,9 @@
+import React from 'react';
+import * as Realm from 'realm-web';
+
+const REALM_APP_ID = "TheHomeSitter-Testimonials";
+const app = new Realm.App({ id: REALM_APP_ID });
+
 const TestText = [
     {
         type:"Empty",

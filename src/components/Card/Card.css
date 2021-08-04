@@ -18,7 +18,7 @@
 }
 
 .dateHeader{
-    margin-bottom: 1rem;
+    align-self: flex-end;
 }
 
 .homeDisplayMore{
@@ -45,9 +45,34 @@
 }
 
 .TestPage{
-    width: 35vw;
-    margin: 4rem;
+    margin: 2rem;
     box-shadow: 0 0 30px 0 rgba(46, 87, 107, 0.5);
+    padding: 0;
+    background: linear-gradient(to right, var(--pDark) 50%, var(--light) 50%);
+}
+
+.content{
+    padding: 2rem;
+    background: var(--light);
+    color: var(--pDark);
+    border-radius: 2rem 2rem 0 2rem;
+}
+
+.details{
+    padding: 1rem 2rem;
+    background: var(--pDark);
+    color: var(--light);
+    border-radius: 0 2rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quote{
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: var(--pDark);
+    margin-bottom: 1rem;
 }
 
 @media only screen and (width<768px) {

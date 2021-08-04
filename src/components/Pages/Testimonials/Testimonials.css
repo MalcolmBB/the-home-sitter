@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 5rem;
 }
 
 .TestimonialsContainer{
@@ -16,18 +17,71 @@
     text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
 }
 
+.TestimonialsHelp{
+    color: var(--pDark);
+    margin: -1rem 1rem 1rem 5rem;
+    font-size: 1.8rem;
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
+}
+
 .Dialog .MuiDialog-paper{
-    border-radius: 1rem!important;
-    padding: 1rem;
+    border-radius: 2rem!important;
     font-family: "Alice", serif!important;
     font-size: 1.1rem!important;
     line-height: calc(1.1rem * 1.6);
+    color: var(--pDark);
+    background: linear-gradient(to right, var(--pDark) 50%, var(--light) 50%);
 }
 
 .Dialog *{
     font-family: "Alice", serif!important;
 }
 
+.DialogQuote{
+    fill: var(--pDark);
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.2rem;
+}
+
+.DialogContent{
+    padding: 2rem;
+    background: var(--light);
+    color: var(-pDark);
+    border-radius: 2rem 2rem 0 2rem;
+}
+
+.DialogDetails{
+    padding: 1rem 2rem;
+    background: var(--pDark);
+    color: var(--light);
+    border-radius: 0 2rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.DialogHead{
+    display: flex;
+    justify-content: space-between;
+}
+
 .dialogNameHeader{
     font-size: 2rem!important;
+}
+
+.dialogDateHeader{
+    align-self: flex-end!important;
+}
+
+.bClose{
+    color: var(--pDark);
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem;
+}
+
+.bClose > svg{
+    width: 3rem!important;
+    height: 3rem!important;
 }

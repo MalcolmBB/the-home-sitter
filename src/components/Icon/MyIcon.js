@@ -5,6 +5,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
 
 function MyIcon({name=null, link, style}){
@@ -25,6 +26,8 @@ function MyIcon({name=null, link, style}){
             return (<FacebookIcon style={style}/>);
         case "Whatsapp":
             return (<WhatsAppIcon style={style}/>);
+        case "Close":
+            return (<CloseRoundedIcon style={style}/>);
         default:
             return null;
     }

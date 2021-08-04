@@ -19,6 +19,9 @@ function Button(props){
     else if (props.type === "LogoMain"){
         return (logoButton(props));
     }
+    else if (props.type === "ActionEmpty"){
+        return (actionButtonEmpty(props));
+    }
 }
 
 function submitButton(props){
@@ -73,6 +76,24 @@ function linkButtonEmpty(props){
                 ></MyIcon>
             </a>
 
+        </button>
+    );
+}
+
+function actionButtonEmpty(props){
+    const {classes, iconName, onClick} = props;
+    return (
+        <button
+            className = {classes}
+            onClick={onClick}
+        >
+                <MyIcon
+                    name={iconName}
+                    style={{
+                        width:"var(--iconSize)",
+                        height:"var(--iconSize)",
+                        padding:0}}
+                ></MyIcon>
         </button>
     );
 }

@@ -10,10 +10,11 @@ import Card from '../../Card/Card';
 import './Home.css';
 
 // Swiper initialisation
-import SwiperCore, {Autoplay, EffectFade} from 'swiper';
+import SwiperCore, {Autoplay, EffectFade, EffectCoverflow} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/swiper.scss';
-SwiperCore.use([Autoplay, EffectFade]);
+import 'swiper/components/effect-fade/effect-fade.scss';
+SwiperCore.use([Autoplay, EffectFade, EffectCoverflow]);
 
 function Home() {
     const [gallery, setGallery] = useState(['dd']);
@@ -58,14 +59,16 @@ function Home() {
                     <Swiper
                         slidesPerView={1}
                         centeredSlides={true}
+                        allowTouchMove={false}
                         speed={2500}
                         loop={true}
-                        effect="fade"
                         autoplay={{
                             delay: 2500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: false
                         }}
+                        fade={{crossfade: true}}
+                        effect="fade"
                         >
                         {aboutGallery.map((data, i) => (
                             <SwiperSlide
@@ -84,6 +87,7 @@ function Home() {
                     centeredSlides={true}
                     speed={2500}
                     loop={true}
+                    effect='coverflow'
                     autoplay={{
                         delay: 2500,
                         disableOnInteraction: false

@@ -7,9 +7,9 @@ import "./header.css"
 const headerButtonsList = [
     {
         type: "Navigation",
-        classes: "button bAbout header",
-        linkTo: "/About",
-        value: "About"
+        classes: "button bHome header",
+        linkTo: "/Home",
+        value: "Home"
     },
     {
         type: "Navigation",

@@ -48,7 +48,12 @@ function Book(){
 
     const handleDateChange = (item) => {
         setRange([item.selection]);
-        setDays(differenceInDays([item.selection][0].endDate, [item.selection][0].startDate) + 1);
+        if (service === "houseSit"){
+            setDays(differenceInDays([item.selection][0].endDate, [item.selection][0].startDate));
+        }
+        else {
+            setDays(differenceInDays([item.selection][0].endDate, [item.selection][0].startDate) + 1);
+        }
     }
 
     const preferredContact = [
@@ -74,8 +79,8 @@ function Book(){
             case "dogWalk":
                 setPrice(100*numberOfDays);
                 break;
-            case "petSit":
-                setPrice(70*numHours*numberOfDays);
+            case "daySit":
+                setPrice(150*numberOfDays);
                 break;
             case "petFeeding":
                 setPrice(60*numHours*numberOfDays);
@@ -171,14 +176,14 @@ function Book(){
                                     }
                                 />
                                 <FormControlLabel
-                                    className={service==="petSit" ? "serviceOption checked" : "serviceOption"}
-                                    value="petSit"
+                                    className={service==="daySit" ? "serviceOption checked" : "serviceOption"}
+                                    value="daySit"
                                     control={<Radio/>}
                                     label={
                                         <div className="contentWrap">
-                                            <h3>Pet Sitting</h3>
-                                            <h5>1 hour • R70</h5>
-                                            <p>Hourly rate to watch over the dogs and cats while you're out and about, and make sure they aren't too lonely! </p>
+                                            <h3>Day Sitting</h3>
+                                            <h5>Duration varies • R150/day</h5>
+                                            <p>Daily rate to watch over the dogs and cats while you're out and about, and make sure they aren't too lonely! </p>
                                         </div>
                                     }
                                 />
@@ -212,8 +217,6 @@ function Book(){
                 </div>
                 <div className="dateContainer">
                     <h2 className="dateLabel">Please select the date(s) you would like to book for</h2>
-                    <br></br>
-                    <h4 className="dateHint">{service ==="houseSit" ? "Please note: The end date is included in the price calculation" : ""}</h4>
                     <DateRange
                         className="dateRange"
                         onChange={item => handleDateChange(item)}
@@ -233,7 +236,7 @@ function Book(){
                         ></Input>
                     </div>
                 </div>
-                <div className={service ==="houseSit" || service==="dogWalk" ? "timeContainer noShowTime" : "timeContainer"}>
+                <div className={service ==="houseSit" || service==="dogWalk" || service==="daySit" ? "timeContainer noShowTime" : "timeContainer"}>
                     <h2 className="timeLabel">Please enter how many hours you require services for</h2>
                     <div className="detailsInput timeInputContainer">
                         <TextField

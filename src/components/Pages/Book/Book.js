@@ -92,6 +92,12 @@ function Book(){
 
     useEffect(() => {
         calculatePrice();
+        if (service === "houseSit"){
+            setDays(differenceInDays(selectedRange[0].endDate, selectedRange[0].startDate));
+        }
+        else {
+            setDays(differenceInDays(selectedRange[0].endDate, selectedRange[0].startDate) + 1);
+        }
     });
 
 

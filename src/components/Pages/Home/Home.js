@@ -10,10 +10,10 @@ import Card from '../../Card/Card';
 import './Home.css';
 
 // Swiper initialisation
-import SwiperCore, {Autoplay} from 'swiper';
+import SwiperCore, {Autoplay, EffectFade} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/swiper.scss';
-SwiperCore.use([Autoplay]);
+SwiperCore.use([Autoplay, EffectFade]);
 
 function Home() {
     const [gallery, setGallery] = useState(['dd']);
@@ -22,7 +22,12 @@ function Home() {
         axios.get('https://res.cloudinary.com/homesitterza/image/list/HomeSitter.json').then(res => {
             setGallery(res.data.resources);
         });
+        axios.get('https://res.cloudinary.com/homesitterza/image/list/HomeSitterAbout.json').then(res => {
+            setAboutGallery(res.data.resources);
+        });
     }, [])
+
+    const [aboutGallery, setAboutGallery] = useState(['dd']);
 
     const clickThing = () => {
         // $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
@@ -46,8 +51,34 @@ function Home() {
         </div>
         <Header></Header>
         <div className="MainContainer">
+            <div className="AboutContainer">
+                <h1 className="AboutLabel">About</h1>
+                <div className="AboutMain">
+                    <p className="AboutMainContent">My name is Julia - a dedicated, reliable and enthusiastic UCT student who is ready to help wherever I can! I offer house/pet sitting, dog walking and cat feeding - with my own transport. Based in Southern Suburbs and surrounds.</p>
+                    <Swiper
+                        slidesPerView={1}
+                        centeredSlides={true}
+                        speed={2500}
+                        loop={true}
+                        effect="fade"
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: false
+                        }}
+                        >
+                        {aboutGallery.map((data, i) => (
+                            <SwiperSlide
+                                style={{width: "auto"}}>
+                                <Image key={i} cloudName="homesitterza" publicId={data.public_id} className="aboutImage">
+                                </Image>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+            </div>
             <div className="CarouselContainer">
-                <h2 className="CarouselLabel">Gallery</h2>
+                <h1 className="CarouselLabel">Gallery</h1>
                 <Swiper
                     slidesPerView="auto"
                     centeredSlides={true}
@@ -72,10 +103,10 @@ function Home() {
                     linkTo="/Gallery"
                     value="View more!"
                     onClick={clickThing}
-                ></Button>
+            ></Button>
             </div>
             <div className="CarouselCardContainer">
-                <h2 className="TestimonialCarouselLabel">Testimonial summaries</h2>
+                <h1 className="TestimonialCarouselLabel">Testimonial summaries</h1>
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={3}

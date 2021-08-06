@@ -2,9 +2,49 @@
     --imagePadding: 2.5rem;
 }
 
+/* Home about styling */
+.AboutContainer{
+    margin-top: 10rem;
+    width: 100vw;
+    padding: 2.5rem 0;
+}
+
+.AboutLabel{
+    color: var(--pDark);
+    margin: -1rem 1rem 3rem 3rem;
+    font-size: 4rem;
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
+}
+
+.AboutMain{
+    display: flex;
+    padding: 0 5rem;
+    gap: 5rem;
+}
+
+.AboutMainContent{
+    font-size: 2rem;
+    color: var(--pDark);
+    line-height: calc(2rem * 1.6);
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
+}
+
+.AboutMain > .swiper-container{
+    width: 40vw;
+}
+
+.aboutImage{
+    height: 25vw;
+    min-width: 40vw;
+    max-width: 40vw;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 0 30px 0 rgba(56, 108, 133, 0.5);
+}
+
 /* Home gallery styling */
 .CarouselContainer{
-    margin-top: 10rem;
+    margin-top: 5rem;
     width: 100vw;
     padding: 2.5rem 0;
     /* background: var(--pDark); */

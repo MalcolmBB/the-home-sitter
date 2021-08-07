@@ -39,7 +39,7 @@ function Book(){
     const [selectedRange, setRange] = useState([
       {
         startDate: new Date(),
-        endDate: addDays(new Date(), 7),
+        endDate: addDays(new Date(), 2),
         key: 'selection'
       }
     ]);

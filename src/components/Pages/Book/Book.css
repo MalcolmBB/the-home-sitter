@@ -17,6 +17,7 @@
 .BookContainer{
     width: 100vw;
     color: var(--pDark);
+    margin-bottom: 5rem;
 }
 
 .BookContainer h2{

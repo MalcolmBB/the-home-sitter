@@ -9,6 +9,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import './Testimonials.css';
 
+// Simplebar initialisation
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 function Testimonials() {
     const [open, setOpen] = useState(false);
@@ -20,6 +23,7 @@ function Testimonials() {
     });
 
     return (
+        <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
         <div className="TestimonialsDiv">
             <Header></Header>
             <div className="TestimonialsContainer">
@@ -79,7 +83,7 @@ function Testimonials() {
             </div>
             <Footer></Footer>
         </div>
-
+        </SimpleBar>
     );
 }
 

@@ -36,7 +36,7 @@ function HomeIllustration(props) {
             height={529.321}
             viewBox="0 0 909 529.321"
             xmlns="http://www.w3.org/2000/svg"
-            className={props.class}
+            className={props.classes}
             {...props}
         >
           <circle

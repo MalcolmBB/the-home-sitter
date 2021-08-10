@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import ReactDOM from 'react-dom';
 import Button from '../button/button';
 import $ from 'jquery';
 import "./header.css"
@@ -36,19 +35,21 @@ function Header(){
     const [isScrolled, setScrolled] = useState(false);
 
     const toggleScrolled = () => {
-        if (($(".headerDiv")[0].getBoundingClientRect().top === 0) && (window.scrollY >= window.innerHeight*0.06)){
+        if (($(".headerDiv")[0].getBoundingClientRect().top === 0) && ($('.simplebar-content-wrapper')[0].scrollTop >= $('.simplebar-content-wrapper')[0].scrollHeight*0.06)){
             setScrolled(true);
         }
         else {
             setScrolled(false);
         }
+    };
+
+    if ($('.simplebar-content-wrapper')[0] !== undefined){
+        $('.simplebar-content-wrapper')[0].addEventListener('scroll', toggleScrolled);
     }
 
-    window.addEventListener('scroll', toggleScrolled);
-
     const clickThing = () => {
-        // $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
-        window.scroll({top: 0, left: 0, behavior: 'smooth'})
+        $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
+        // window.scroll({top: 0, left: 0, behavior: 'smooth'})
         document.activeElement.blur();
     };
 

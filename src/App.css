@@ -31,3 +31,31 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
+html, body{
+    max-width: 100vw;
+    overflow-x: hidden;
+    height: auto!important;
+}
+
+.simplebar-track{
+    background: transparent;
+    overflow-x: hidden;
+}
+
+.simplebar-scrollbar::before{
+    background-color: var(--pDark)!important;
+    opacity: 1!important;
+    border-radius: 9999vw 0 0 9999vw!important;
+    right: 0!important;
+    left: 40%!important;
+}
+
+.simplebar-hover::before, .simplebar-dragging::before{
+    background-color: var(--pDark)!important;
+    left: 20%!important;
+}
+
+.simplebar-track.simplebar-horizontal {
+    display: none!important;
+}

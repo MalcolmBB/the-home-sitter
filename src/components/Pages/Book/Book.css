@@ -29,11 +29,16 @@
 /* Personal Details Styling */
 .detailsContainer{
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 5rem;
     margin: 5rem;
     padding: 2rem;
     margin-bottom: 0;
+}
+
+.detailsInnerContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .detailsLabel{
@@ -116,9 +121,19 @@
 
 /* Date Styling */
 .dateContainer{
-    gap: 1rem;
+    display: flex;
     margin:0 5rem;
     padding: 2rem;
+}
+
+.dateInnerContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dateInnerContainer .rdrMonths{
+    justify-content: center;
 }
 
 .dateRange{
@@ -126,6 +141,7 @@
     font-size: 1rem!important;
     gap: 2rem;
     margin: 2rem;
+    width: 30vw;
     box-shadow: 0 0 40px 0 rgba(46, 87, 107, 0.3);
 }
 

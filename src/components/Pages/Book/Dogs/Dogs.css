@@ -1,0 +1,57 @@
+.DogsContainer{
+    width: 35vw;
+    height: 35vw;
+    overflow: visible;
+    position: relative;
+    margin-left: 5rem;
+}
+
+.backgroundBlob{
+    transform: scale(1.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.Dog{
+    width: 35vw;
+    position: absolute;
+    bottom: 0;
+    transform-origin: center;
+    transition: all 2s;
+    transform: rotate(0) scale(0);
+}
+
+.Dog1{
+    animation: ShowDog 72s linear infinite 0s;
+}
+
+.Dog2{
+    animation: ShowDog 72s linear infinite 12s;
+}
+
+.Dog3{
+    animation: ShowDog 72s linear infinite 24s;
+}
+
+.Dog4{
+    animation: ShowDog 72s linear infinite 36s;
+}
+
+.Dog5{
+    bottom: -5rem;
+    animation: ShowDog 72s linear infinite 48s;
+}
+
+.Dog6{
+    animation: ShowDog 72s linear infinite 60s;
+}
+
+@keyframes ShowDog {
+    2.78%, 13.89%{
+        transform: rotate(360deg) scale(1);
+    }
+    16.67%, 100%{
+        transform: rotate(0) scale(0);
+    }
+}

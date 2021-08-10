@@ -6,6 +6,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import Doggy from './doggy';
 
 
 function MyIcon({name=null, link, style}){
@@ -28,6 +29,8 @@ function MyIcon({name=null, link, style}){
             return (<WhatsAppIcon style={style}/>);
         case "Close":
             return (<CloseRoundedIcon style={style}/>);
+        case "Doggy":
+            return (<Doggy className="DogLogo"></Doggy>);
         default:
             return null;
     }

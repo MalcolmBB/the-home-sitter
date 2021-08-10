@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import Dogs from "./Dogs/Dogs";
+import Cats from "./Cats/Cats";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,7 +20,11 @@ import Button from '../../button/button';
 import './Book.css';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { differenceInDays } from 'date-fns'
+import { differenceInDays } from 'date-fns';
+
+// Simplebar initialisation
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 function Book(){
     const [details, setDetails] = useState(
@@ -102,12 +108,14 @@ function Book(){
 
 
     return(
+        <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
         <div className="BookDiv">
             <Header></Header>
             <div className="BookContainer">
                 <div className="detailsContainer">
-                    <h2 className="detailsLabel">Please enter your personal details</h2>
-                    <form
+                    <div className="detailsInnerContainer">
+                        <h2 className="detailsLabel">Please enter your personal details</h2>
+                        <form
                         className="detailsForm"
                         action="">
                         <div className="detailsInput">
@@ -163,6 +171,8 @@ function Book(){
                             </TextField>
                         </div>
                     </form>
+                    </div>
+                    <Dogs></Dogs>
                 </div>
                 <div className="serviceContainer">
                     <FormControl component="fieldset">
@@ -222,17 +232,18 @@ function Book(){
                     </FormControl>
                 </div>
                 <div className="dateContainer">
-                    <h2 className="dateLabel">Please select the date(s) you would like to book for</h2>
-                    <DateRange
-                        className="dateRange"
-                        onChange={item => handleDateChange(item)}
-                        showSelectionPreview={true}
-                        moveRangeOnFirstSelection={false}
-                        ranges={selectedRange}
-                        direction="horizontal"
-                        rangeColors={["var(--primary)"]}
-                    />
-                    <div className="dateRangeNumber detailsInput">
+                    <div className="dateInnerContainer">
+                        <h2 className="dateLabel">Please select the date(s) you would like to book for</h2>
+                        <DateRange
+                            className="dateRange"
+                            onChange={item => handleDateChange(item)}
+                            showSelectionPreview={true}
+                            moveRangeOnFirstSelection={false}
+                            ranges={selectedRange}
+                            direction="horizontal"
+                            rangeColors={["var(--primary)"]}
+                        />
+                        <div className="dateRangeNumber detailsInput">
                         <h3 className="dateRangeNumberLabel">{service ==="houseSit" ? "Number of nights" : "Number of days"}</h3>
                         <Input
                             className="estimatedPriceDisplay"
@@ -241,6 +252,8 @@ function Book(){
                             value={numberOfDays}
                         ></Input>
                     </div>
+                    </div>
+                    <Cats></Cats>
                 </div>
                 <div className={service ==="houseSit" || service==="dogWalk" || service==="daySit" ? "timeContainer noShowTime" : "timeContainer"}>
                     <h2 className="timeLabel">Please enter how many hours you require services for</h2>
@@ -280,6 +293,7 @@ function Book(){
             </div>
             <Footer pageName="Book"></Footer>
         </div>
+        </SimpleBar>
     );
 }
 

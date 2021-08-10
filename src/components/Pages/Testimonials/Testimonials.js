@@ -13,7 +13,7 @@ import './Testimonials.css';
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
-function Testimonials() {
+function Testimonials(props) {
     const [open, setOpen] = useState(false);
 
     const [activeCard, setActiveCard] = useState({
@@ -30,7 +30,7 @@ function Testimonials() {
                 <h1 className="TestimonialsHeader">Testimonials</h1>
                 <h3 className="TestimonialsHelp">*Click on a card to view the full testimonial</h3>
                 <div className="cardContainer">
-                    {TestText.map((data, key) => (
+                    {props.testimonials.map((data, key) => (
                         <Card
                             key={key}
                             type="TestPage"

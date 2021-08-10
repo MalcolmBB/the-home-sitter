@@ -21,7 +21,7 @@ import "swiper/swiper.scss";
 import "swiper/components/effect-fade/effect-fade.scss";
 SwiperCore.use([Autoplay, EffectFade, EffectCoverflow]);
 
-function Home() {
+function Home(props) {
   const [gallery, setGallery] = useState(["dd"]);
 
   useEffect(() => {
@@ -148,7 +148,7 @@ function Home() {
                 pauseOnMouseEnter: false,
               }}
             >
-              {TestText.map((data, i) => (
+              {props.testimonials.map((data, i) => (
                 <SwiperSlide key={i} style={{ width: "auto" }}>
                   <Card
                     classes="Card homeCard"

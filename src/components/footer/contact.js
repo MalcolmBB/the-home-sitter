@@ -1,3 +1,4 @@
+
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -49,12 +50,12 @@ class Contact extends React.Component {
               to_name: 'Julia Boland',
               message_html: message,
             };
-            // emailjs.send(
-            //     'service_x3cxr0m',
-            //     'template_7y5fvdu',
-            //     templateParams,
-            //     'user_NigdOEjlWhj5f3Jjv5Vw3'
-            // )
+            emailjs.send(
+                'service_tb7w78g',
+                'template_m3tf5gl',
+                templateParams,
+                'user_PFWwwo3BfFxRoPtwprZCw'
+            )
             this.setState({open:true});
             this.resetForm();
         }

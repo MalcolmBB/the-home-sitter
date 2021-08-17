@@ -107,6 +107,24 @@ function Book(){
     });
 
 
+    const [emailParams, setEmailParams] = useState(
+        {
+            name: "-1",
+            nameError: "",
+            email: "default@default.com",
+            emailError: "",
+            cellPhone: "",
+            cellError: "",
+            preferredContact : "",
+            preferredError: "",
+            service: "House Sitting",
+            startDate : "",
+            endDate : "",
+            estimatedPrice : "",
+        }
+    );
+
+
     return(
         <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
         <div className="BookDiv">

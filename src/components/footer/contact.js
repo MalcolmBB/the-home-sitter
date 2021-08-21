@@ -49,12 +49,12 @@ class Contact extends React.Component {
               to_name: 'Julia Boland',
               message_html: message,
             };
-            emailjs.send(
-                'service_tb7w78g',
-                'template_m3tf5gl',
-                templateParams,
-                'user_PFWwwo3BfFxRoPtwprZCw'
-            )
+            // emailjs.send(
+            //     'service_tb7w78g',
+            //     'template_m3tf5gl',
+            //     templateParams,
+            //     'user_PFWwwo3BfFxRoPtwprZCw'
+            // )
             this.setState({open:true});
             this.resetForm();
         }

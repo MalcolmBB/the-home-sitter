@@ -17,7 +17,6 @@ function Footer(props){
         <div className="footerContainer">
             <div className={pageName === "Book" ? "footerDiv bookFooter" : "footerDiv"}>
                 <div className={pageName === "Book" ? "LogoAndLinksContainer bookLinks" : "LogoAndLinksContainer"}>
-                    {/*// TODO: Make the a tag a button that navigates back to home. with the dog logo as the value. Can just have the logo between the two tags*/}
                     <Button type="ActionEmpty" classes={"bDogLogo footer"} iconName="Doggy" onClick={clickThing}
                     ></Button>
                     <Button

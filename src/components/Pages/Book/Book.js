@@ -414,6 +414,7 @@ function Book(){
                             >
                                 {preferredContact.map((option) => (
                                     <MenuItem
+                                        style={{fontFamily: "Alice, serif"}}
                                         key={option.value}
                                         value={option.value}
                                     >

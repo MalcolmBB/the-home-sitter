@@ -67,15 +67,6 @@
     font-size: 1.1rem!important;
 }
 
-.MuiPaper-root{
-    border-radius: 1rem!important;
-    padding: .5rem;
-}
-
-.MuiPaper-root *{
-    font-family: "Alice", serif!important;
-}
-
 /* Service Details Styling */
 .serviceContainer{
     display: flex;

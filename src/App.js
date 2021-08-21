@@ -16,7 +16,7 @@ import * as Realm from 'realm-web';
 
 function App() {
 
-    const [testimonials, setTestimonials] = useState([,]);
+    const [testimonials, setTestimonials] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const React_App_ID = "thehomesitter-ainwl";
@@ -24,7 +24,7 @@ function App() {
 
     useEffect(() => {
         async function getData(){
-            const user = await app.logIn(Realm.Credentials.anonymous());
+            await app.logIn(Realm.Credentials.anonymous());
             const client = app.currentUser.mongoClient('mongodb-atlas');
             const TestText = client.db('TheHomeSitter').collection('Testimonials');;
             setTestimonials((await TestText.find()));

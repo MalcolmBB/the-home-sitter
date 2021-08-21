@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import Dogs from "./Dogs/Dogs";
@@ -21,18 +21,22 @@ import './Book.css';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { differenceInDays } from 'date-fns';
+import $ from 'jquery';
+import * as emailjs from 'emailjs-com';
 
 // Simplebar initialisation
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
+var validator = require("email-validator");
+
 function Book(){
     const [details, setDetails] = useState(
         {
-            name: "John Doe",
-            email: "johndoe@email.com",
-            cellNumber: "0123456789",
-            preferredContact: "whatsapp"
+            name: "",
+            email: "",
+            cellNumber: "",
+            preferredContact: ""
         }
     );
 
@@ -64,11 +68,11 @@ function Book(){
 
     const preferredContact = [
         {
-            value: 'email',
+            value: 'Email',
             label: "Email",
         },
         {
-            value: 'whatsapp',
+            value: 'WhatsApp',
             label: "WhatsApp",
         }
     ]
@@ -97,15 +101,88 @@ function Book(){
     }
 
     useEffect(() => {
-        calculatePrice();
         if (service === "houseSit"){
             setDays(differenceInDays(selectedRange[0].endDate, selectedRange[0].startDate));
         }
         else {
             setDays(differenceInDays(selectedRange[0].endDate, selectedRange[0].startDate) + 1);
         }
-    });
+        calculatePrice();
+    }, [service, selectedRange, calculatePrice]);
 
+    const getNiceDate = (date) =>{
+        let outputString = "";
+        switch (date.getDay()){
+            case 1:
+                outputString += "Monday the ";
+                break;
+            case 2:
+                outputString += "Tuesday the ";
+                break;
+            case 3:
+                outputString += "Wednesday the ";
+                break;
+            case 4:
+                outputString += "Thursday the ";
+                break;
+            case 5:
+                outputString += "Friday the ";
+                break;
+            case 6:
+                outputString += "Saturday the ";
+                break;
+            case 7:
+                outputString += "Sunday the ";
+                break;
+        }
+
+        outputString += date.getDate() + nth(date.getDate()) + " of ";
+
+        switch (date.getMonth()){
+            case 1:
+                outputString += "January ";
+                break;
+            case 2:
+                outputString += "February ";
+                break;
+            case 3:
+                outputString += "March ";
+                break;
+            case 4:
+                outputString += "April ";
+                break;
+            case 5:
+                outputString += "May ";
+                break;
+            case 6:
+                outputString += "June ";
+                break;
+            case 7:
+                outputString += "July ";
+                break;
+            case 8:
+                outputString += "August ";
+                break;
+            case 9:
+                outputString += "September ";
+                break;
+            case 10:
+                outputString += "October ";
+                break;
+            case 11:
+                outputString += "Novemeber ";
+                break;
+            case 12:
+                outputString += "December ";
+                break;
+        }
+
+        outputString += date.getFullYear();
+
+        return outputString;
+    }
+
+    const nth = (n) =>{return["st","nd","rd"][((n+90)%100-10)%10-1]||"th"}
 
     const [emailParams, setEmailParams] = useState(
         {
@@ -118,12 +195,150 @@ function Book(){
             preferredContact : "",
             preferredError: "",
             service: "House Sitting",
-            startDate : "",
-            endDate : "",
+            startDate : getNiceDate(selectedRange[0].startDate),
+            endDate : getNiceDate(selectedRange[0].endDate),
             estimatedPrice : "",
         }
     );
 
+    const handleSubmit = () => {
+        setEmailParams({
+            ...emailParams,
+            name: details.name,
+            nameError: (details.name === "John Doe" || details.name === "") === true ? "Please enter a valid name" : "",
+
+            email: details.email,
+            emailError: verifyEmail(details.email) === false ? "Please enter a valid email address" : "",
+
+            cellPhone: details.cellNumber,
+            cellError: (details.cellNumber.length === 10 && details.cellNumber !== "") === false ? "Please enter a valid cellphone number" : "",
+
+            preferredContact: details.preferredContact,
+            preferredError: details.preferredContact === "" ? "Please choose a preferred contact method" : "",
+
+            service: getNiceServiceName(),
+
+            startDate: getNiceDate(selectedRange[0].startDate),
+
+            endDate: getNiceDate(selectedRange[0].endDate),
+
+            estimatedPrice: estimatedPrice
+        })
+    }
+
+    const getNiceServiceName = () => {
+        switch (service) {
+            case "houseSit":
+                return "House sitting"
+                break;
+            case "dogWalk":
+                return "Dog walking"
+                break;
+            case "daySit":
+                return "Day sitting"
+                break;
+            case "petFeeding":
+                return "Pet feeding"
+                break;
+            default:
+                return "House sitting"
+        }
+    }
+
+    const nameRef = useRef(null);
+    const emailRef = useRef(null);
+    const cellRef = useRef(null);
+    const preferredRef = useRef(null);
+
+    useEffect(() => {
+        if (emailParams.nameError !== ""){
+            nameRef.current.focus();
+        }
+        else if (emailParams.emailError !== ""){
+            emailRef.current.focus();
+        }
+        else if (emailParams.cellError !== ""){
+            cellRef.current.focus();
+        }
+        else if (emailParams.preferredError !== ""){
+            preferredRef.current.focus();
+        }
+        else if (emailParams.email !== "default@default.com"){
+            document.activeElement.blur();
+            setShowDialog(true);
+        }
+        clickThing();
+    }, [emailParams])
+
+    const verifyEmail = (testEmail) => {
+        if (validator.validate(testEmail) && testEmail !== ""){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    const sendBooking = () => {
+        const templateParams = {
+          from_name: emailParams.name,
+          from_email: emailParams.email,
+          from_cellphone: emailParams.cellPhone,
+          to_name: 'Julia Boland',
+          preferred_contact: emailParams.preferredContact,
+          service: emailParams.service,
+          start_date: emailParams.startDate,
+          end_date: emailParams.endDate,
+          estimated_price: emailParams.estimatedPrice,
+        };
+        // emailjs.send(
+        //     'service_tb7w78g',
+        //     'template_gtqy5gd',
+        //     templateParams,
+        //     'user_PFWwwo3BfFxRoPtwprZCw'
+        // )
+        resetAll();
+    }
+
+    const clickThing = () => {
+      $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
+    };
+
+    const [showDialog, setShowDialog] = useState(false);
+    const [dialogSend, setDialogSend] = useState(false);
+
+    const resetAll = () => {
+        setDetails({
+            name: "",
+            email: "",
+            cellNumber: "",
+            preferredContact: ""
+        });
+        setService('houseSit');
+        setRange([{
+          startDate: new Date(),
+          endDate: addDays(new Date(), 2),
+          key: 'selection'
+        }]);
+        setHours(1);
+        setPrice(200)
+        setEmailParams({
+            name: "-1",
+            nameError: "",
+            email: "default@default.com",
+            emailError: "",
+            cellPhone: "",
+            cellError: "",
+            preferredContact : "",
+            preferredError: "",
+            service: "House Sitting",
+            startDate : "",
+            endDate : "",
+            estimatedPrice : "",
+        });
+        setShowDialog(false)
+        setDialogSend(false)
+    }
 
     return(
         <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
@@ -143,7 +358,12 @@ function Book(){
                                 placeholder="John Doe"
                                 required
                                 fullWidth
+                                value={details.name}
+                                inputRef={nameRef}
                                 onChange={(event) => (setDetails({ ...details, name : event.target.value}))}
+
+                                error={emailParams.nameError !== ""}
+                                helperText={emailParams.nameError}
                             ></TextField>
                         </div>
                         <div className="detailsInput">
@@ -154,7 +374,12 @@ function Book(){
                                 type='email'
                                 required
                                 fullWidth
+                                value={details.email}
+                                inputRef={emailRef}
                                 onChange={(event) => (setDetails({ ...details, email : event.target.value}))}
+
+                                error={emailParams.emailError !== ""}
+                                helperText={emailParams.emailError}
                             ></TextField>
                         </div>
                         <div className="detailsInput">
@@ -166,7 +391,12 @@ function Book(){
                                 inputProps={{ minLength: 10, maxLength:10}}
                                 required
                                 fullWidth
+                                value={details.cellNumber}
+                                inputRef={cellRef}
                                 onChange={(event) => (setDetails({ ...details, cellNumber : event.target.value}))}
+
+                                error={emailParams.cellError !== ""}
+                                helperText={emailParams.cellError}
                             ></TextField>
                         </div>
                         <div className="detailsInput">
@@ -176,7 +406,11 @@ function Book(){
                                 select
                                 required
                                 fullWidth
+                                value={details.preferredContact}
+                                inputRef={preferredRef}
                                 onChange={(event) => (setDetails({ ...details, preferredContact : event.target.value}))}
+                                error={emailParams.preferredError !== ""}
+                                helperText={emailParams.preferredError}
                             >
                                 {preferredContact.map((option) => (
                                     <MenuItem
@@ -305,9 +539,52 @@ function Book(){
                         type="Submit"
                         classes="button bSubmitBooking"
                         value="Confirm booking"
-                        onClick={() => console.log(selectedRange, numberOfDays)}
+                        onClick={handleSubmit}
                     ></Button>
                 </div>
+                <Dialog className="dialogConfirm" open={showDialog}>
+                    <h3 className="dialogConfirmHeader">Booking request confirmation</h3>
+                    <p className="dialogConfirmParagraph">
+                        Please confirm that you, {emailParams.name}, would like to book The HomeSitter for {emailParams.service} from {emailParams.startDate} till {emailParams.endDate}.
+                        <br/>
+                        <br/>
+                        The estimated price is R{emailParams.estimatedPrice}.
+                        <br/>
+                        <br/>
+                        You will be contacted via {emailParams.preferredContact} at {emailParams.preferredContact === "WhatsApp" ? emailParams.cellPhone : emailParams.email}
+                        <br/>
+                        <br/>
+                        Thank you for choosing The HomeSitter!
+                    </p>
+                    <div className="buttonContainerDialog">
+                        <Button
+                            type="Submit"
+                            value="Cancel"
+                            classes="dialogButton bCancelBooking"
+                            onClick={() => {
+                                setShowDialog(false)
+                            }}
+                        ></Button>
+                        <Button
+                            type="Submit"
+                            value="Confirm booking request"
+                            classes="button dialogButton bSendBooking bSubmitBooking"
+                            onClick={() => {
+                                setDialogSend(true);
+                                setTimeout(() => {
+                                    setDialogSend(false);
+                                    setTimeout(() => {
+                                        setShowDialog(false);
+                                        sendBooking();
+                                    }, 250)
+                                }, 1200);
+                            }}
+                        ></Button>
+                    </div>
+                    <Dialog className="dialogSend" open={dialogSend}>
+                        <h3 className="dialogSendConfirmation">Your booking request has been sent!</h3>
+                    </Dialog>
+                </Dialog>
             </div>
             <Footer pageName="Book"></Footer>
         </div>

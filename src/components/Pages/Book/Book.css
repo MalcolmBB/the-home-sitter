@@ -63,10 +63,18 @@
 
 .detailsForm *{
     font-family: "Alice", serif!important;
-    color: var(--pDark)!important;
+    color: var(--pDark);
     font-size: 1.1rem!important;
 }
 
+.MuiPaper-root{
+    border-radius: 1rem!important;
+    padding: .5rem;
+}
+
+.MuiPaper-root *{
+    font-family: "Alice", serif!important;
+}
 
 /* Service Details Styling */
 .serviceContainer{
@@ -238,4 +246,61 @@
 
 .bSubmitBooking:before, .bSubmitBooking:after{
     background: var(--primary);
+}
+
+/* Dialog styling */
+.dialogConfirm .MuiDialog-paper{
+    padding: 2rem;
+    border-radius: 2rem;
+    max-width: 70vw;
+    color: var(--pDark);
+    display: flex;
+    gap: 2rem;
+}
+
+.dialogConfirmHeader{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-shadow: 0.3rem 0.3rem 0.2rem var(--pLight);
+}
+
+.dialogConfirmParagraph{
+    font-size: 1.2rem;
+}
+
+.buttonContainerDialog{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dialogButton{
+    font-size: 1.6rem;
+}
+
+.bCancelBooking{
+    border: 0.1rem solid transparent;
+    background: none;
+    border-radius: 9999rem;
+    font-family: "Alice", serif;
+    cursor: pointer;
+    color: var(--pDark);
+    transition: all .3s;
+    padding: 1rem;
+}
+
+.bCancelBooking:hover, .bCancelBooking:focus{
+    border: 0.1rem solid var(--pDark);
+}
+
+.dialogSend .MuiDialog-paper{
+    padding: 2rem;
+    border-radius: 2rem;
+    max-width: 70vw;
+    color: var(--pDark);
+    display: flex;
+    gap: 2rem;
+}
+
+.dialogSendConfirmation{
+    font-size: 1.6rem;
 }

@@ -35,7 +35,7 @@ function Header(){
     const [isScrolled, setScrolled] = useState(false);
 
     const toggleScrolled = () => {
-        if (($(".headerDiv")[0].getBoundingClientRect().top === 0) && ($('.simplebar-content-wrapper')[0].scrollTop >= $('.simplebar-content-wrapper')[0].scrollHeight*0.06)){
+        if (($(".headerDiv")[0].getBoundingClientRect().top === 0) && ($('.simplebar-content-wrapper')[0].scrollTop >= $('.simplebar-content-wrapper')[0].scrollHeight*0.01)) {
             setScrolled(true);
         }
         else {

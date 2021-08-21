@@ -519,7 +519,8 @@ function Book(){
                             inputProps={{max:10, min:1}}
                             required
                             fullWidth
-                            onChange={(event) => (setHours(event.target.value))}
+                            value={numHours}
+                            onChange={(event) => (event.target.value > 10 ? setHours(10) : event.target.value < 1 ? setHours(1) : setHours(event.target.value))}
                         ></TextField>
                     </div>
                 </div>

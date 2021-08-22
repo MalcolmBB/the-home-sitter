@@ -3,7 +3,7 @@ import React from "react";
 function HouseName(props) {
   return (
     <svg
-      className={props.class}
+      className={props.classes}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsBx="https://boxy-svg.com"
       viewBox="1.829 -1.829 806.04 230.539"
@@ -25,10 +25,12 @@ function HouseName(props) {
         style={{ lineHeight: 79.9999, whiteSpace: "pre" }}
       ></path>
       <path
+          className="topPaw1"
         stroke="#000"
         d="M160.303 85.586c1.62-2.888 1.782-7.4 1.739-9.409-.498-2.102 2.062-2.771 3.583-1.869 2.026 1.261 5.655 2.841 7.388 2.985 6.102.338 4.641 4.552 2.778 5.246-2.983.765-8.852 4.546-10.645 6.326-2.342 1.487-5.963-1.283-4.843-3.279z"
       ></path>
       <ellipse
+          className="topPaw1"
         cx="154.765"
         cy="80.853"
         rx="3.047"
@@ -37,6 +39,7 @@ function HouseName(props) {
         bxOrigin="0.501 0.49"
       ></ellipse>
       <ellipse
+          className="topPaw1"
         cx="156.694"
         cy="71.629"
         rx="2.962"
@@ -44,6 +47,7 @@ function HouseName(props) {
         transform="rotate(-39.675 156.41 72.276)"
       ></ellipse>
       <ellipse
+          className="topPaw1"
         cx="164.257"
         cy="67.507"
         rx="3.117"
@@ -51,6 +55,7 @@ function HouseName(props) {
         transform="rotate(-13.776 164.478 68.006)"
       ></ellipse>
       <ellipse
+          className="topPaw1"
         cx="172.404"
         cy="70.582"
         rx="2.759"
@@ -58,10 +63,12 @@ function HouseName(props) {
         transform="rotate(-7.598 172.047 72.346)"
       ></ellipse>
       <path
+          className="topPaw2"
         stroke="#000"
         d="M176.701 56.851c3.95-1.01 8.04-4.454 9.759-6.077 1.4-2.056 4.237-.571 4.786 1.34.678 2.591 2.489 6.696 3.888 8.174 5.075 5.067.103 7.252-2.142 6.337-3.295-1.743-11.763-3.366-14.898-3.368-3.36-.666-4.124-5.707-1.393-6.406z"
       ></path>
       <ellipse
+          className="topPaw2"
         cx="154.765"
         cy="80.853"
         rx="3.779"
@@ -70,6 +77,7 @@ function HouseName(props) {
         bxOrigin="0.501 0.49"
       ></ellipse>
       <ellipse
+          className="topPaw2"
         cx="156.694"
         cy="71.629"
         rx="3.671"
@@ -77,6 +85,7 @@ function HouseName(props) {
         transform="rotate(4.638 530.838 428.089) skewX(-1.087)"
       ></ellipse>
       <ellipse
+          className="topPaw2"
         cx="164.257"
         cy="67.507"
         rx="3.767"
@@ -84,6 +93,7 @@ function HouseName(props) {
         transform="rotate(28.442 220.354 131.376) skewX(-5.355)"
       ></ellipse>
       <ellipse
+          className="topPaw2"
         cx="172.404"
         cy="70.582"
         rx="3.3"
@@ -91,10 +101,12 @@ function HouseName(props) {
         transform="rotate(34.356 209.34 119.215) skewX(-5.834)"
       ></ellipse>
       <path
+          className="bottomPaw1"
         stroke="#000"
         d="M599.38 172.394c-1.947.258-4.123 1.718-5.053 2.419-.805.935-2.05.022-2.177-.961-.144-1.33-.717-3.485-1.277-4.305-2.057-2.83.453-3.613 1.455-3.018 1.442 1.07 5.348 2.4 6.836 2.593 1.548.54 1.56 3.094.216 3.272z"
       ></path>
       <ellipse
+          className="bottomPaw1"
         cx="154.765"
         cy="80.853"
         rx="1.81"
@@ -103,6 +115,7 @@ function HouseName(props) {
         bxOrigin="0.501 0.49"
       ></ellipse>
       <ellipse
+          className="bottomPaw1"
         cx="156.694"
         cy="71.629"
         rx="1.756"
@@ -110,6 +123,7 @@ function HouseName(props) {
         transform="rotate(-167.719 380.613 101.699) skewX(-1.118)"
       ></ellipse>
       <ellipse
+          className="bottomPaw1"
         cx="164.257"
         cy="67.507"
         rx="1.815"
@@ -117,6 +131,7 @@ function HouseName(props) {
         transform="rotate(-142.848 393.434 50.07) skewX(-3.176)"
       ></ellipse>
       <ellipse
+          className="bottomPaw1"
         cx="172.404"
         cy="70.582"
         rx="1.598"
@@ -124,10 +139,12 @@ function HouseName(props) {
         transform="rotate(-136.758 398.346 38.224) skewX(-3.332)"
       ></ellipse>
       <path
+          className="bottomPaw2"
         stroke="#000"
         d="M613.79 178.283c-1.269 1.874-1.64 4.936-1.726 6.306.22 1.46-1.561 1.768-2.544 1.068-1.304-.975-3.682-2.256-4.852-2.455-4.13-.579-2.896-3.363-1.587-3.729 2.072-.35 6.28-2.59 7.603-3.698 1.68-.878 3.982 1.213 3.106 2.508z"
       ></path>
       <ellipse
+          className="bottomPaw2"
         cx="154.765"
         cy="80.853"
         rx="2.082"
@@ -136,6 +153,7 @@ function HouseName(props) {
         bxOrigin="0.501 0.49"
       ></ellipse>
       <ellipse
+          className="bottomPaw2"
         cx="156.694"
         cy="71.629"
         rx="2.022"
@@ -143,6 +161,7 @@ function HouseName(props) {
         transform="rotate(145.113 367.904 201.97) skewX(-.057)"
       ></ellipse>
       <ellipse
+          className="bottomPaw2"
         cx="164.257"
         cy="67.507"
         rx="2.129"
@@ -150,6 +169,7 @@ function HouseName(props) {
         transform="rotate(171.015 382.343 146.437) skewX(-.053)"
       ></ellipse>
       <ellipse
+          className="bottomPaw2"
         cx="172.404"
         cy="70.582"
         rx="1.883"
@@ -157,10 +177,12 @@ function HouseName(props) {
         transform="rotate(177.196 387.168 134.503) skewX(-.045)"
       ></ellipse>
       <path
+          className="bottomPaw3"
         stroke="#000"
         d="M613.895 202.836c-1.8 1.333-3.105 4.26-3.613 5.604-.242 1.57-2.043 1.1-2.769-.037-.946-1.552-2.827-3.885-3.886-4.599-3.775-2.388-1.73-4.658-.362-4.455 2.094.553 6.82.138 8.431-.403 1.881-.152 3.438 2.963 2.199 3.89z"
       ></path>
       <ellipse
+          className="bottomPaw3"
         cx="154.765"
         cy="80.853"
         rx="2.048"
@@ -169,6 +191,7 @@ function HouseName(props) {
         bxOrigin="0.501 0.49"
       ></ellipse>
       <ellipse
+          className="bottomPaw3"
         cx="156.694"
         cy="71.629"
         rx="1.997"
@@ -176,6 +199,7 @@ function HouseName(props) {
         transform="rotate(167.242 378.162 167.867) skewX(2.416)"
       ></ellipse>
       <ellipse
+          className="bottomPaw3"
         cx="164.257"
         cy="67.507"
         rx="2.197"
@@ -183,6 +207,7 @@ function HouseName(props) {
         transform="rotate(-164.57 399.331 111.034) skewX(6.992)"
       ></ellipse>
       <ellipse
+          className="bottomPaw3"
         cx="172.404"
         cy="70.582"
         rx="1.971"
@@ -190,10 +215,12 @@ function HouseName(props) {
         transform="rotate(-158.259 405.036 99.167) skewX(7.349)"
       ></ellipse>
       <path
+          className="bottomPaw4"
         stroke="#000"
         d="M632.042 202.183c.113 3.003 2.065 7.145 3.023 8.96 1.338 1.797-.272 3-1.823 2.535-2.097-.678-5.54-1.27-6.905-1-4.722 1.11-5.567-3.06-4.488-4.125 1.88-1.39 4.535-6.194 5.06-8.227 1.07-1.896 5.05-.22 5.133 1.857z"
       ></path>
       <ellipse
+          className="bottomPaw4"
         cx="154.765"
         cy="80.853"
         rx="2.56"
@@ -202,6 +229,7 @@ function HouseName(props) {
         bxOrigin="0.501 0.49"
       ></ellipse>
       <ellipse
+          className="bottomPaw4"
         cx="156.694"
         cy="71.629"
         rx="2.399"
@@ -209,6 +237,7 @@ function HouseName(props) {
         transform="rotate(110.416 341.19 316.972) skewX(-13.138)"
       ></ellipse>
       <ellipse
+          className="bottomPaw4"
         cx="164.257"
         cy="67.507"
         rx="2.369"
@@ -216,6 +245,7 @@ function HouseName(props) {
         transform="rotate(144.391 377.176 219.173) skewX(1.423)"
       ></ellipse>
       <ellipse
+          className="bottomPaw4"
         cx="172.404"
         cy="70.582"
         rx="2.113"

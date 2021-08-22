@@ -1,0 +1,21 @@
+.sendTestContainer *{
+    font-family: "Alice", serif!important;
+}
+
+.sendTestDetailsContainer{
+    display: flex;
+    gap: 2rem;
+}
+
+.sendTestDialog .MuiDialog-paper{
+    padding: 2rem;
+    border-radius: 2rem;
+    max-width: 70vw;
+    color: var(--pDark);
+    display: flex;
+    gap: 2rem;
+}
+
+.sendTestDialogTitle{
+    font-size: 1.6rem;
+}

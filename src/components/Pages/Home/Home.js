@@ -4,7 +4,6 @@ import Footer from "../../footer/footer";
 import Button from "../../button/button.js";
 import HomeIllustration from "./HomeIllustration.js";
 import { Image } from "cloudinary-react";
-import axios from "axios";
 import TestText from "../Testimonials/TestText";
 import Card from "../../Card/Card";
 import "./Home.css";
@@ -22,24 +21,6 @@ import "swiper/components/effect-fade/effect-fade.scss";
 SwiperCore.use([Autoplay, EffectFade, EffectCoverflow]);
 
 function Home(props) {
-  const [gallery, setGallery] = useState(["dd"]);
-
-  useEffect(() => {
-    axios
-      .get("https://res.cloudinary.com/homesitterza/image/list/HomeSitter.json")
-      .then((res) => {
-        setGallery(res.data.resources);
-      });
-    axios
-      .get(
-        "https://res.cloudinary.com/homesitterza/image/list/HomeSitterAbout.json"
-      )
-      .then((res) => {
-        setAboutGallery(res.data.resources);
-      });
-  }, []);
-
-  const [aboutGallery, setAboutGallery] = useState(["dd"]);
 
   const clickThing = () => {
     $('.simplebar-content-wrapper')[0].scroll({top: 0, left: 0, behavior: 'smooth'})
@@ -90,7 +71,7 @@ function Home(props) {
                 fade={{ crossfade: true }}
                 effect="fade"
               >
-                {aboutGallery.map((data, i) => (
+                {props.aboutGallery.map((data, i) => (
                   <SwiperSlide key={i} style={{ width: "auto" }}>
                     <Image
 
@@ -116,7 +97,7 @@ function Home(props) {
                 disableOnInteraction: false,
               }}
             >
-              {gallery.map((data, i) => (
+              {props.gallery.map((data, i) => (
                 <SwiperSlide key={i} style={{ width: "auto" }}>
                   <Image
                     cloudName="homesitterza"

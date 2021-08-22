@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../button/button';
 import Contact from './contact';
+import SendTest from './sendTestimonial';
 import $ from 'jquery';
 import './footer.css';
 
@@ -30,7 +31,7 @@ function Footer(props){
                         linkTo="https://api.whatsapp.com/send?phone=27761420263"
                     ></Button>
                 </div>
-                <Contact></Contact>
+                {pageName === "Testimonials" ? <SendTest></SendTest> : <Contact></Contact>}
             </div>
             <div className="MadeBy">
                 <p>Made with ♥ by <a target="_blank" rel="noreferrer" href="https://malcolmbaatjies.me/#/">Malcolm Baatjies</a></p>

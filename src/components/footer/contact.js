@@ -189,7 +189,7 @@ class Contact extends React.Component {
                     />
                 <Button
                     type="Submit"
-                    classes="button bSubmit"
+                    classes="button bSubmit bContactFooter bFooterSubmit"
                     value="Submit"
                     onClick={this.handleSubmit}
                 ></Button>

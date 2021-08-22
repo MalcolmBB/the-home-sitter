@@ -105,7 +105,7 @@
     gap: 2rem;
 }
 
-.contactContainer > form > button{
+.bFooterSubmit{
     align-self: flex-end;
     margin-right: 5vw;
     margin-top: 1.5vw;
@@ -114,7 +114,7 @@
     background-image: linear-gradient(var(--primary), var(--primary));
 }
 
-.contactContainer > form > button::before, .contactContainer > form > button::after{
+.bFooterSubmit::before, .bFooterSubmit::after{
     background: var(--primary);
 }
 

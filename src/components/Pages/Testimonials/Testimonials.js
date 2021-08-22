@@ -81,7 +81,7 @@ function Testimonials(props) {
                     </div>
                 </Dialog>
             </div>
-            <Footer></Footer>
+            <Footer pageName="Testimonials"></Footer>
         </div>
         </SimpleBar>
     );

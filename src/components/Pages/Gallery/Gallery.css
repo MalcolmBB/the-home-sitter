@@ -1,5 +1,10 @@
 .GalleryDiv{
     max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.GalleryDiv .headerDiv{
+    position: fixed;
 }
 
 .GalleryHeader{
@@ -11,7 +16,8 @@
 }
 
 .GalleryContainer{
-    margin-top: 5rem;
+    min-height: 100vh;
+    margin-top: 11rem;
     padding: 1rem;
     cursor: row-resize;
 }

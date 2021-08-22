@@ -53,7 +53,6 @@ function Header(){
         document.activeElement.blur();
     };
 
-
     return (
         <div className={isScrolled ? "headerScrolled headerDiv" : "headerBar headerDiv"}>
                 <Button

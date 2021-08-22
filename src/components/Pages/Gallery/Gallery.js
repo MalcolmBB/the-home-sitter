@@ -14,9 +14,9 @@ function Gallery(){
     const [gallery, setGallery] = useState(['dd']);
 
     useEffect(() => {
+        console.log("Hello");
         axios.get('https://res.cloudinary.com/homesitterza/image/list/HomeSitter.json').then(res => {
             setGallery(res.data.resources);
-            console.log(res.data.resources);
         });
     }, [])
 

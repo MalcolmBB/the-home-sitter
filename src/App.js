@@ -76,21 +76,21 @@ function App() {
   }, [loading]);
 
   return (
-    <Router basename={"/"}>
+    <Router basename={process.env.PUBLIC_URL + '/'}>
       <React.Fragment>
         <Route
           component={({ location }) => (
             <TransitionGroup>
               <CSSTransition key={location.key} timeout={500} classNames="PageChange">
                 <Switch location={location}>
-                  <Redirect exact from="/" to="Loading" />
+                  <Redirect exact from='/' to='/Loading'/>
                   <Route
-                    path="/Loading"
+                    path='/Loading'
                     exact
                     component={() => <Loading loading={loading} />}
                   />
                   <Route
-                    path="/Home"
+                    path='/Home'
                     exact
                     component={() => (
                       <Home
@@ -101,18 +101,18 @@ function App() {
                     )}
                   />
                   <Route
-                    path="/Gallery"
+                    path='/Gallery'
                     exact
                     component={() => <Gallery gallery={gallery} />}
                   />
                   <Route
-                    path="/Testimonials"
+                    path='/Testimonials'
                     exact
                     component={() => (
                       <Testimonials testimonials={testimonials} />
                     )}
                   />
-              <Route path="/Book" exact component={Book} />
+              <Route path='/Book' exact component={Book} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

@@ -10,7 +10,7 @@ function Loading(props){
     }, [props.loading])
     return (
         <div className="LoadingDiv MainPageDiv">
-            { props.loading === false ? <Redirect to="/Home"/> : null}
+            { props.loading === false ? <Redirect to='/Home'/> : null}
             <HouseName classes="HouseName"></HouseName>
             <LoadingPaws loading={props.loading} className="LoadingPaws"></LoadingPaws>
         </div>

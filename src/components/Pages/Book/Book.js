@@ -30,7 +30,7 @@ import "simplebar/dist/simplebar.min.css";
 
 var validator = require("email-validator");
 
-function Book() {
+function Book(props) {
     const [details, setDetails] = useState({name: "", email: "", cellNumber: "", preferredContact: ""});
 
     const [service, setService] = useState('houseSit');
@@ -346,7 +346,7 @@ function Book() {
         setDialogSend(false)
     }
 
-    return (<SimpleBar style={{
+    return (<SimpleBar className="MainPageDiv" style={{
             height: "100vh"
         }} forceVisible="y" autoHide={false}>
         <div className="BookDiv">

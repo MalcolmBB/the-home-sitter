@@ -60,6 +60,11 @@
     opacity: 0.5;
 }
 
+.activePageButton{
+    padding-bottom: .3rem;
+    border-bottom: .2rem solid var(--primary);
+}
+
 @keyframes buttonAnim {
     0%{
         transform: skewX(-5deg) skewY(-5deg) translateX(-0.4vw) translateY(-0.4vh);

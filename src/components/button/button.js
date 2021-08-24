@@ -1,6 +1,6 @@
 import React from 'react';
 import MyIcon from '../Icon/MyIcon';
-import {Link} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import "./button.css"
 
 function Button(props){
@@ -37,13 +37,13 @@ function submitButton(props){
 function navButton(props){
     const {value, classes, onClick, linkTo} = props;
     return (
-        <Link tabIndex="-1" to={linkTo}>
+        <NavLink tabIndex="-1" to={linkTo} activeClassName="activePageButton">
             <button
                 className = {classes}
                 onClick={onClick}>
             <span>- {value} -</span>
             </button>
-        </Link>
+        </NavLink>
     );
 }
 

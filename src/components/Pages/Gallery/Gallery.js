@@ -12,7 +12,7 @@ import "simplebar/dist/simplebar.min.css";
 function Gallery(props){
 
     return (
-        <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
+        <SimpleBar className="MainPageDiv" style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
         <div className="GalleryDiv">
             <Header></Header>
             <div className="GalleryContainer">

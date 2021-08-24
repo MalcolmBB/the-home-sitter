@@ -1,7 +1,7 @@
 .LoadingDiv{
     width: 100vw;
     height: 100vh;
-    background: var(--pLight);
+    background: var(--light);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,12 +12,20 @@
     width: 70vw;
 }
 
+.HouseName * {
+    color: var(--pDark);
+    fill: var(--pDark);
+    stroke: var(--pDark);
+}
+
 .LoadingPaws{
     width: 20vw;
+    fill: var(--pDark);
+    stroke: var(--pDark);
 }
 
 .LoadingPaws>path{
-    opacity: 1;
+    opacity: 0;
 }
 
 .LoadingPaws>*:nth-child(1){
@@ -86,6 +94,6 @@
 
 @keyframes paw1 {
     100%{
-        opacity: 0;
+        opacity: 1;
     }
 }

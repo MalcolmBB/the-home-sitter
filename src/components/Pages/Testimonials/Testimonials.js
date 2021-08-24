@@ -23,7 +23,7 @@ function Testimonials(props) {
     });
 
     return (
-        <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
+        <SimpleBar className="MainPageDiv" style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
         <div className="TestimonialsDiv">
             <Header></Header>
             <div className="TestimonialsContainer">

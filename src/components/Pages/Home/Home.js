@@ -29,7 +29,7 @@ function Home(props) {
   };
 
   return (
-    <div className="HomeDiv">
+    <div className="HomeDiv MainPageDiv">
       <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
         <div className="IllustrationContainer">
           <HomeIllustration classes="HomeIllustration"></HomeIllustration>

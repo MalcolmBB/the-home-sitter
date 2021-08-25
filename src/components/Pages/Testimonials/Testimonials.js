@@ -3,7 +3,6 @@ import Header from '../../header/header.js';
 import Footer from '../../footer/footer.js';
 import Button from '../../button/button.js';
 import Card from '../../Card/Card.js';
-import TestText from './TestText.js';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';

@@ -4,7 +4,6 @@ import Footer from "../../footer/footer";
 import Button from "../../button/button.js";
 import HomeIllustration from "./HomeIllustration.js";
 import { Image } from "cloudinary-react";
-import TestText from "../Testimonials/TestText";
 import Card from "../../Card/Card";
 import "./Home.css";
 import $ from 'jquery';

@@ -244,16 +244,12 @@ function Book(props) {
         switch (service) {
             case "houseSit":
                 return "House sitting"
-                break;
             case "dogWalk":
                 return "Dog walking"
-                break;
             case "daySit":
                 return "Day sitting"
-                break;
             case "petFeeding":
                 return "Pet feeding"
-                break;
             default:
                 return "House sitting"
         }

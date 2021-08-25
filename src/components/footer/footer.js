@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Button from '../button/button';
 import Contact from './contact';
 import SendTest from './sendTestimonial';
@@ -38,7 +39,7 @@ function Footer(props){
             </div>
             <div className="LegalLinksContainer">
                 <a className="PrivacyPolicy">Privacy Policy</a>
-                <p className="Copyright">©2021 Julia Boland. All rights reserved</p>
+                {pageName === "Testimonials" ? <Link tabIndex="-1" to="/AdminTestimonials"><p className="Copyright">©2021 Julia Boland. All rights reserved</p></Link> : <p className="Copyright">©2021 Julia Boland. All rights reserved</p>}
                 <a className="Sitemap">Sitemap</a>
             </div>
         </div>

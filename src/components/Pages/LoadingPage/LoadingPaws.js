@@ -1,15 +1,6 @@
 import React, {useState, useEffect} from "react";
 import $ from 'jquery';
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
 function LoadingPaws(props) {
 
     return (<svg {...props} viewBox="0 0 229.708 229.711" xmlns="http://www.w3.org/2000/svg">

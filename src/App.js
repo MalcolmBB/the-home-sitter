@@ -14,6 +14,7 @@ import Gallery from "./components/Pages/Gallery/Gallery";
 import Testimonials from "./components/Pages/Testimonials/Testimonials";
 import Book from "./components/Pages/Book/Book";
 import Loading from "./components/Pages/LoadingPage/loading";
+import AdminTestimonials from "./components/Pages/AdminTestimonials/AdminTestimonials";
 
 import * as Realm from "realm-web";
 import axios from "axios";
@@ -110,6 +111,13 @@ function App() {
                     exact
                     component={() => (
                       <Testimonials testimonials={testimonials} />
+                    )}
+                  />
+                  <Route
+                    path='/AdminTestimonials'
+                    exact
+                    component={() => (
+                      <AdminTestimonials/>
                     )}
                   />
               <Route path='/Book' exact component={Book} />

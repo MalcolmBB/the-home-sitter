@@ -144,44 +144,6 @@ function Book(props) {
         outputString += date.getDate() + nth(date.getDate()) + " of ";
 
         outputString += monthNames[date.getMonth()] + " ";
-        // switch (date.getMonth()) {
-        //     case 1:
-        //         outputString += "January ";
-        //         break;
-        //     case 2:
-        //         outputString += "February ";
-        //         break;
-        //     case 3:
-        //         outputString += "March ";
-        //         break;
-        //     case 4:
-        //         outputString += "April ";
-        //         break;
-        //     case 5:
-        //         outputString += "May ";
-        //         break;
-        //     case 6:
-        //         outputString += "June ";
-        //         break;
-        //     case 7:
-        //         outputString += "July ";
-        //         break;
-        //     case 8:
-        //         outputString += "August ";
-        //         break;
-        //     case 9:
-        //         outputString += "September ";
-        //         break;
-        //     case 10:
-        //         outputString += "October ";
-        //         break;
-        //     case 11:
-        //         outputString += "Novemeber ";
-        //         break;
-        //     case 12:
-        //         outputString += "December ";
-        //         break;
-        // }
 
         outputString += date.getFullYear();
 
@@ -358,7 +320,8 @@ function Book(props) {
                                             ...details,
                                             name: event.target.value
                                         })
-                                    }} error={emailParams.nameError !== ""} helperText={emailParams.nameError}></TextField>
+                                    }} error={emailParams.nameError !== ""} helperText={emailParams.nameError}
+                                ></TextField>
                             </div>
                             <div className="detailsInput">
                                 <TextField className="emailInput" label="Email address" placeholder="johndoe@email.com" type='email' required fullWidth value={details.email} inputRef={emailRef} onChange={(event) => (setDetails({

@@ -8,11 +8,9 @@ function Button(props){
         return (navButton(props));
     }
     else if (props.type === "Link"){
-        // props.linkTo = process.env.PUBLIC_URL + props.linkTo;
         return (linkButton(props));
     }
     else if (props.type === "LinkEmpty"){
-        // props.linkTo = process.env.PUBLIC_URL + props.linkTo;
         return (linkButtonEmpty(props));
     }
     else if (props.type === "Submit"){

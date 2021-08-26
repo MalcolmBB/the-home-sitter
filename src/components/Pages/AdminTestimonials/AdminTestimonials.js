@@ -18,6 +18,8 @@ import "./AdminTestimonials.css";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
+var passwordHash = require('password-hash');
+
 function AdminTestimonials() {
   const [adminDetails, setAdminDetails] = useState({
     username: "",
@@ -31,6 +33,17 @@ function AdminTestimonials() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [pasteEmail, setPasteEmail] = useState(true);
+
+  const [testDetails, setTestDetails] = useState({
+    name: "",
+    nameError: "",
+    date: "",
+    dateError: "",
+    summary: "",
+    summaryError: "",
+    paragraph: [""],
+    paragraphError: "",
+  });
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -51,95 +64,160 @@ function AdminTestimonials() {
         <Header></Header>
         <div className="AdminTestimonialsContainer">
           <h1 className="AdminTestimonialsHeader">Upload Testimonials</h1>
-          {loggedIn === false
-            ?
+          {loggedIn === false ? (
             <div className="AdminLogin">
-                <h3 className="AdminLoginPrompt">Please log in to continue</h3>
-                <TextField
-                  className="adminUsernameInput"
-                  label="Username"
-                  placeholder="John Doe"
-                  required
-                  fullWidth
-                  value={adminDetails.username}
-                  onChange={(event) => {
-                    setAdminDetails({
-                      ...adminDetails,
-                      username: event.target.value,
-                    });
-                  }}
-                  error={adminDetails.usernameError !== ""}
-                  helperText={adminDetails.usernameError}
-                ></TextField>
-                <TextField
-                  className="adminPasswordInput"
-                  label="Password"
-                  placeholder="*********"
-                  required
-                  fullWidth
-                  value={adminDetails.password}
-                  onChange={(event) => {
-                    setAdminDetails({
-                      ...adminDetails,
-                      password: event.target.value,
-                    });
-                  }}
-                  error={adminDetails.passwordError !== ""}
-                  helperText={adminDetails.passwordError}
-                  type={showPassword ? "text" : "password"}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                        >
-                          {showPassword ? <Visibility /> : <VisibilityOff />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                ></TextField>
-                <Button
-                    type="Submit"
-                    classes={"bAdminLoginSubmit"}
-                    onClick={() => {setLoggedIn(true)}}
-                    value="Log in"
-                ></Button>
+              <h3 className="AdminLoginPrompt">Please log in to continue</h3>
+              <TextField
+                className="adminUsernameInput"
+                label="Username"
+                placeholder="John Doe"
+                required
+                fullWidth
+                value={adminDetails.username}
+                onChange={(event) => {
+                  setAdminDetails({
+                    ...adminDetails,
+                    username: event.target.value,
+                  });
+                }}
+                error={adminDetails.usernameError !== ""}
+                helperText={adminDetails.usernameError}
+              ></TextField>
+              <TextField
+                className="adminPasswordInput"
+                label="Password"
+                required
+                fullWidth
+                value={adminDetails.password}
+                onChange={(event) => {
+                  setAdminDetails({
+                    ...adminDetails,
+                    password: event.target.value,
+                  });
+                }}
+                error={adminDetails.passwordError !== ""}
+                helperText={adminDetails.passwordError}
+                type={showPassword ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+              <Button
+                type="Submit"
+                classes={"bAdminLoginSubmit"}
+                onClick={() => {
+                  setLoggedIn(true);
+                }}
+                value="Log in"
+              ></Button>
             </div>
-            :
+          ) : (
             <div className="EnterTestimonial">
-                <div className="TabSelection">
-                    <Button
-                        type="Submit"
-                        classes={pasteEmail === true ? "bTabSelection bPasteEmail" : "bTabSelection bPasteEmail bInactiveTabSelection"}
-                        onClick={() => {console.log("Hello");}}
-                        value="Paste email"
-                    ></Button>
-                    <Button
-                        type="Submit"
-                        classes={pasteEmail === false ? "bTabSelection bEnterDetails" : "bTabSelection bEnterDetails bInactiveTabSelection"}
-                        onClick={() => {console.log("Hello");}}
-                        value="Enter manually"
-                    ></Button>
+              <div className="TabSelection">
+                <Button
+                  type="Submit"
+                  classes={
+                    pasteEmail === true
+                      ? "bTabSelection bPasteEmail"
+                      : "bTabSelection bPasteEmail bInactiveTabSelection"
+                  }
+                  onClick={() => {
+                    setPasteEmail(true);
+                  }}
+                  value="Paste email"
+                ></Button>
+                <Button
+                  type="Submit"
+                  classes={
+                    pasteEmail === false
+                      ? "bTabSelection bEnterDetails"
+                      : "bTabSelection bEnterDetails bInactiveTabSelection"
+                  }
+                  onClick={() => {
+                    setPasteEmail(false);
+                  }}
+                  value="Enter manually"
+                ></Button>
+              </div>
+              <div className="TabView">
+                <div
+                  className={
+                    pasteEmail === true ? "pasteEmail activeTab" : "pasteEmail"
+                  }
+                >
+                  <h4 className="pasteEmailHeading">
+                    Paste the contents of the email here
+                  </h4>
+                  <TextField
+                    className="pasteEmailInput"
+                    label="Paste here"
+                    multiline
+                    rows={4}
+                    fullWidth
+                  ></TextField>
+                  <Button
+                    type="Submit"
+                    classes={"bPasteEmailSubmit bAdminLoginSubmit"}
+                    onClick={() => {
+                      setPasteEmail(!pasteEmail);
+                    }}
+                    value="Extract details"
+                  ></Button>
                 </div>
-                <div className="TabView">
-                    <div className="pasteEmail">
-                        <h4 className="pasteEmailHeading">Paste the contents of the email here</h4>
-                        <TextField className="pasteEmailInput" label="Paste here" multiline rows={4} fullWidth
-                        ></TextField>
-                        <Button
-                            type="Submit"
-                            classes={"bPasteEmailSubmit bAdminLoginSubmit"}
-                            onClick={() => {setPasteEmail(!pasteEmail)}}
-                            value="Extract details"
-                        ></Button>
-                    </div>
+                <div
+                  className={
+                    pasteEmail === false
+                      ? "enterDetails activeTab"
+                      : "enterDetails"
+                  }
+                >
+                  <h4 className="enterDetailsHeading">
+                    Enter the details of the testimonial here
+                  </h4>
+                  <TextField
+                    className="enterDetailsName"
+                    label="Name"
+                    fullWidth
+                  ></TextField>
+                  <TextField
+                    className="enterDetailsDate"
+                    label="Date"
+                    fullWidth
+                  ></TextField>
+                  <TextField
+                    className="enterDetailsSummary"
+                    label="Summary"
+                    fullWidth
+                  ></TextField>
+                  <TextField
+                    className="enterDetailsParagraph"
+                    label="Paragraph"
+                    fullWidth
+                    multiline
+                    rows={3}
+                  ></TextField>
+                  <Button
+                    type="Submit"
+                    classes={"bEnterDetailsSubmit bAdminLoginSubmit"}
+                    onClick={() => {
+                      setPasteEmail(!pasteEmail);
+                    }}
+                    value="Extract details"
+                  ></Button>
                 </div>
+              </div>
             </div>
-}
-
+          )}
         </div>
         <Footer></Footer>
       </div>

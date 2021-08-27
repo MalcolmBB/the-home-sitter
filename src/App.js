@@ -24,7 +24,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const React_App_ID = "thehomesitter-ainwl";
-  const app = new Realm.App({ id: React_App_ID });
+
 
   const [gallery, setGallery] = useState(["dd"]);
   const [aboutGallery, setAboutGallery] = useState(["dd"]);
@@ -33,6 +33,7 @@ function App() {
     const source = axios.CancelToken.source();
 
     async function getData() {
+      const app = new Realm.App({ id: React_App_ID });
       await app.logIn(Realm.Credentials.anonymous());
       const client = app.currentUser.mongoClient("mongodb-atlas");
       const TestText = client.db("TheHomeSitter").collection("Testimonials");
@@ -63,6 +64,7 @@ function App() {
       }
 
       setTimeout(() => {
+          app.currentUser.logOut();
         setLoading(false);
       }, 1000);
     }
@@ -74,7 +76,7 @@ function App() {
     return () => {
       source.cancel();
     };
-  }, [loading]);
+}, [loading]);
 
   return (
     <Router basename={process.env.PUBLIC_URL + '/'}>
@@ -88,7 +90,7 @@ function App() {
                   <Route
                     path='/Loading'
                     exact
-                    component={() => <Loading loading={loading} />}
+                    component={() => <Loading loading={loading}/>}
                   />
                   <Route
                     path='/Home'

@@ -22,7 +22,7 @@ function SendTest() {
 
     const [testDialog, setTestDialog] = useState(false);
 
-    const [details, setDetails] = useState({
+    const [sendTestimonialDetails, setSendTestimonialDetails] = useState({
         name: "",
         nameError: "",
         email: "",
@@ -60,52 +60,53 @@ function SendTest() {
         return outputString;
     }
 
-    const handleSubmit = () => {
-        if (details.name === "") {
-            setDetails({nameError: nameErrorConst});
+    const handleSendTestimonialSubmit = () => {
+        console.log("Clicked");
+        if (sendTestimonialDetails.name === "") {
+            setSendTestimonialDetails({nameError: nameErrorConst});
         }
 
-        if ((details.email === "") || !(validator.validate(details.email))) {
-            setDetails({emailError: emailErrorConst});
+        if ((sendTestimonialDetails.email === "") || !(validator.validate(sendTestimonialDetails.email))) {
+            setSendTestimonialDetails({emailError: emailErrorConst});
         }
 
-        if (details.summary === "") {
-            setDetails({summaryError: summaryErrorConst});
+        if (sendTestimonialDetails.summary === "") {
+            setSendTestimonialDetails({summaryError: summaryErrorConst});
         }
 
-        if (details.paragraph === "") {
-            setDetails({paragraphError: paragraphErrorConst})
+        if (sendTestimonialDetails.paragraph === "") {
+            setSendTestimonialDetails({paragraphError: paragraphErrorConst})
         }
 
-        if (details.nameError !== "") {
+        if ((sendTestimonialDetails.nameError !== "") || (sendTestimonialDetails.name === "")) {
             testNameRef.current.focus();
-        } else if (details.emailError !== "") {
+        } else if ((sendTestimonialDetails.emailError !== "") || ((sendTestimonialDetails.email === "") || !(validator.validate(sendTestimonialDetails.email)))) {
             testEmailRef.current.focus();
-        } else if (details.summaryError !== "") {
+        } else if ((sendTestimonialDetails.summaryError !== "") || (sendTestimonialDetails.summary === "")) {
             testSummaryRef.current.focus();
-        } else if (details.paragraphError !== "") {
+        } else if ((sendTestimonialDetails.paragraphError !== "") || (sendTestimonialDetails.paragraph === "")) {
             testParagraphRef.current.focus();
         } else {
 
-            let message = "Testimonial from " + details.name + "<br/><br/>Date:<br/>" + getTestDate() + "<br/><br/>Summary:<br/><br/>" + details.summary.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "<br/><br/><br/>Paragraph:<br/><br/>" + details.paragraph.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+            let message = "Testimonial from #Name#<br/>" + sendTestimonialDetails.name + "<br/>#/Name#<br/><br/>#Date#<br/>Date:<br/>" + getTestDate() + "<br/>#/Date#<br/><br/>#Summary#<br/>Summary:<br/><br/>" + sendTestimonialDetails.summary.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "<br/>#/Summary#<br/><br/><br/>#Paragraph#<br/>Paragraph:<br/><br/>" + sendTestimonialDetails.paragraph.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "<br/>#/Paragraph#";
 
             const templateParams = {
-                from_name: details.name,
-                from_email: details.email,
+                from_name: sendTestimonialDetails.name,
+                from_email: sendTestimonialDetails.email,
                 to_name: 'Julia Boland',
                 message_html: message
             };
-            // emailjs.send(
-            //     'service_tb7w78g',
-            //     'template_m3tf5gl',
-            //     templateParams,
-            //     'user_PFWwwo3BfFxRoPtwprZCw'
-            // )
+            emailjs.send(
+                'service_tb7w78g',
+                'template_m3tf5gl',
+                templateParams,
+                'user_PFWwwo3BfFxRoPtwprZCw'
+            )
 
             setTestDialog(true);
             setTimeout(() => {
                 setTestDialog(false);
-                setDetails({
+                setSendTestimonialDetails({
                     name: "",
                     nameError: "",
                     email: "",
@@ -121,7 +122,6 @@ function SendTest() {
     }
     return (<div className="sendTestContainer contactContainer">
         <h2 className="sendTestHeader">Please enter your details and testimonial below</h2>
-        <form>
             <div className="sendTestDetailsContainer">
                 <TextField inputRef={testNameRef} inputProps={{
                         style: {
@@ -135,21 +135,21 @@ function SendTest() {
                         style: {
                             fontSize: "calc(var(--inputFontSize)*0.7)"
                         }
-                    }} value={details.name} placeholder="John Doe" fullWidth variant='standard' autoComplete='name' label='Full Name' onChange={(event) => {
+                    }} value={sendTestimonialDetails.name} placeholder="John Doe" fullWidth variant='standard' autoComplete='name' label='Full Name' onChange={(event) => {
                         if (event.target.value === "") {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 name: event.target.value,
                                 nameError: nameErrorConst
                             })
                         } else {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 name: event.target.value,
                                 nameError: ""
                             })
                         }
-                    }} error={details.nameError !== ""} helperText={details.nameError}></TextField>
+                    }} error={sendTestimonialDetails.nameError !== ""} helperText={sendTestimonialDetails.nameError}></TextField>
                 <TextField inputRef={testEmailRef} inputProps={{
                         style: {
                             fontSize: "var(--inputFontSize)"
@@ -162,26 +162,26 @@ function SendTest() {
                         style: {
                             fontSize: "calc(var(--inputFontSize)*0.7)"
                         }
-                    }} value={details.email} placeholder="johndoe@email.com" fullWidth variant='standard' autoComplete='email' label='Email' onChange={(event) => {
-                        setDetails({
-                            ...details,
+                    }} value={sendTestimonialDetails.email} placeholder="johndoe@email.com" fullWidth variant='standard' autoComplete='email' label='Email' onChange={(event) => {
+                        setSendTestimonialDetails({
+                            ...sendTestimonialDetails,
                             email: event.target.value
                         })
                     }} onBlur={(event) => {
                         if ((event.target.value === "") || !(validator.validate(event.target.value))) {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 email: event.target.value,
                                 emailError: emailErrorConst
                             })
                         } else {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 email: event.target.value,
                                 emailError: ""
                             })
                         }
-                    }} error={details.emailError !== ""} helperText={details.emailError}></TextField>
+                    }} error={sendTestimonialDetails.emailError !== ""} helperText={sendTestimonialDetails.emailError}></TextField>
             </div>
             <div className="sendTestContentContainer">
                 <TextField inputRef={testSummaryRef} inputProps={{
@@ -197,21 +197,21 @@ function SendTest() {
                         style: {
                             fontSize: "calc(var(--inputFontSize)*0.7)"
                         }
-                    }} value={details.summary} placeholder="A short sentence describing your overall experience with The HomeSitter" fullWidth variant='standard' label='Summary sentence' spellCheck multiline rows={2} autoComplete="none" onChange={(event) => {
+                    }} value={sendTestimonialDetails.summary} placeholder="A short sentence describing your overall experience with The HomeSitter" fullWidth variant='standard' label='Summary sentence' spellCheck multiline rows={2} autoComplete="none" onChange={(event) => {
                         if (event.target.value === "") {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 summary: event.target.value,
                                 summaryError: summaryErrorConst
                             })
                         } else {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 summary: event.target.value,
                                 summaryError: ""
                             })
                         }
-                    }} error={details.summaryError !== ""} helperText={details.summaryError}></TextField>
+                    }} error={sendTestimonialDetails.summaryError !== ""} helperText={sendTestimonialDetails.summaryError}></TextField>
                 <TextField inputRef={testParagraphRef} inputProps={{
                         style: {
                             fontSize: "var(--inputFontSize)",
@@ -225,24 +225,23 @@ function SendTest() {
                         style: {
                             fontSize: "calc(var(--inputFontSize)*0.7)"
                         }
-                    }} value={details.paragraph} placeholder="A few sentences describing your interaction with The HomeSitter." fullWidth variant='standard' label='Testimonial' spellCheck multiline rows={4} autoComplete="none" onChange={(event) => {
+                    }} value={sendTestimonialDetails.paragraph} placeholder="A few sentences describing your interaction with The HomeSitter." fullWidth variant='standard' label='Testimonial' spellCheck multiline rows={4} autoComplete="none" onChange={(event) => {
                         if (event.target.value === "") {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 paragraph: event.target.value,
                                 paragraphError: paragraphErrorConst
                             })
                         } else {
-                            setDetails({
-                                ...details,
+                            setSendTestimonialDetails({
+                                ...sendTestimonialDetails,
                                 paragraph: event.target.value,
                                 paragraphError: ""
                             })
                         }
-                    }} error={details.paragraphError !== ""} helperText={details.paragraphError}></TextField>
+                    }} error={sendTestimonialDetails.paragraphError !== ""} helperText={sendTestimonialDetails.paragraphError}></TextField>
             </div>
-            <Button type="Submit" classes="button bSubmit bSendTestFooter bFooterSubmit" value="Submit" onClick={handleSubmit}></Button>
-        </form>
+            <Button type="Submit" classes="button bSubmit bSendTestFooter bFooterSubmit" value="Submit" onClick={handleSendTestimonialSubmit}></Button>
         <Dialog className="sendTestDialog" open={testDialog}>
             <h2 className="sendTestDialogTitle">Your testimonial has been sent!
                 <br/><br/>

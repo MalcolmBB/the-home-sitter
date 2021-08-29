@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -78,6 +78,26 @@ function App() {
     };
 }, [loading]);
 
+    const [testimonialsOpen, setTestimonialsOpen] = useState(false);
+
+    const handleSetTestimonialsOpen = (setOpenArgument) => {
+        setTestimonialsOpen(setOpenArgument);
+    }
+
+    const [testimonialsActiveCard, setTestimonialsActiveCard] = useState({
+        date: "placeholder",
+        name: "placeholder",
+        paragraph: ["placeholder", "place"]
+    });
+
+    const handleSetTestimonialsActiveCard = (setActiveCardArgument) => {
+        setTestimonialsActiveCard({
+            date: setActiveCardArgument.date,
+            name: setActiveCardArgument.name,
+            paragraph: setActiveCardArgument.paragraph
+        });
+    }
+
   return (
     <Router basename={process.env.PUBLIC_URL + '/'}>
       <React.Fragment>
@@ -100,6 +120,8 @@ function App() {
                         testimonials={testimonials}
                         gallery={gallery}
                         aboutGallery={aboutGallery}
+                        handleTestimonialsOpen={handleSetTestimonialsOpen}
+                        handleTestimonialsActive={handleSetTestimonialsActiveCard}
                       />
                     )}
                   />
@@ -112,7 +134,11 @@ function App() {
                     path='/Testimonials'
                     exact
                     component={() => (
-                      <Testimonials testimonials={testimonials} />
+                      <Testimonials
+                          testimonials={testimonials}
+                          testimonialsOpen={testimonialsOpen}
+                          testimonialsActiveCard={testimonialsActiveCard}
+                      />
                     )}
                   />
                   <Route

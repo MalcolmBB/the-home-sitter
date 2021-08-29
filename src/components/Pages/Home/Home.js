@@ -135,6 +135,15 @@ function Home(props) {
                     name={data.name}
                     summary={data.summary}
                     paragraph={data.paragraph}
+                    linkTo="/Testimonials"
+                    onClick={() => (
+                        props.handleTestimonialsActive({
+                            date: data.date,
+                            name: data.name,
+                            paragraph: data.paragraph
+                        }),
+                        props.handleTestimonialsOpen(true)
+                    )}
                   ></Card>
                 </SwiperSlide>
               ))}

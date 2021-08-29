@@ -13,13 +13,9 @@ import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
 function Testimonials(props) {
-    const [open, setOpen] = useState(false);
+    const [testimonialsOpen, setTestimonialsOpen] = useState(props.testimonialsOpen);
 
-    const [activeCard, setActiveCard] = useState({
-        date: "placeholder",
-        name: "placeholder",
-        paragraph: ["placeholder", "place"]
-    });
+    const [testimonialsActiveCard, setTestimonialsActiveCard] = useState(props.testimonialsActiveCard);
 
     return (
         <SimpleBar className="MainPageDiv" style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
@@ -39,17 +35,17 @@ function Testimonials(props) {
                             summary={data.summary}
                             paragraph={data.paragraph}
                             onClick={(event) => (
-                                setActiveCard({
+                                setTestimonialsActiveCard({
                                     date: data.date,
                                     name: data.name,
                                     paragraph: data.paragraph
                                 }),
-                                setOpen(true)
+                                setTestimonialsOpen(true)
                             )}
                         ></Card>
                     ))}
                 </div>
-                <Dialog className="Dialog" maxWidth="xl" open={open} onClose={(event) => (setOpen(false))}>
+                <Dialog className="Dialog" maxWidth="xl" open={testimonialsOpen} onClose={(event) => (setTestimonialsOpen(false))}>
                     <div className="DialogContent">
                         <div className="DialogHead">
                             <svg
@@ -65,18 +61,18 @@ function Testimonials(props) {
                                 classes="button bClose"
                                 type="ActionEmpty"
                                 iconName="Close"
-                                onClick={(event) => (setOpen(false))}
+                                onClick={(event) => (setTestimonialsOpen(false))}
                             ></Button>
                         </div>
-                        {activeCard.paragraph.map((par, key) => (
+                        {testimonialsActiveCard.paragraph.map((par, key) => (
                             <p key={key} style={{whiteSpace:"pre-line",}}>
                                 {par}
                             </p>
                             ))}
                     </div>
                     <div className="DialogDetails">
-                        <h4 className="dialogNameHeader">{activeCard.name}</h4>
-                        <h5 className="dialogDateHeader">{activeCard.date}</h5>
+                        <h4 className="dialogNameHeader">{testimonialsActiveCard.name}</h4>
+                        <h5 className="dialogDateHeader">{testimonialsActiveCard.date}</h5>
                     </div>
                 </Dialog>
             </div>

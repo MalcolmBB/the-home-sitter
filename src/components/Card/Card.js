@@ -1,14 +1,9 @@
 import React from 'react';
 import Clamp from 'react-multiline-clamp';
+import {Link} from 'react-router-dom';
 import './Card.css';
 
-// {paragraph.map((par, key) => (
-// <p key={key} style={{whiteSpace:"pre-line",}}>
-//     {par}
-// </p>
-// ))}
-
-function Card({type, date, name, summary, paragraph, classes = "Card", onClick}){
+function Card({type, date, name, summary, paragraph, classes = "Card", onClick, linkTo}){
 if (type === "TestPage"){
         classes += " TestPage"
         return (
@@ -33,7 +28,8 @@ if (type === "TestPage"){
         )
     }
     return (
-            <div className="homeDisplayCard">
+        <Link tabIndex="-1" to={linkTo}>
+            <div className="homeDisplayCard" onClick={onClick}>
                 <div className={classes}>
                     <h4>{name}</h4>
                     <div>
@@ -46,6 +42,7 @@ if (type === "TestPage"){
                     </Clamp>
                 </div>
             </div>
+        </Link>
     )
 }
 

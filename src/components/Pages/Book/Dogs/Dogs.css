@@ -55,3 +55,14 @@
         transform: rotate(0) scale(0);
     }
 }
+
+@media only screen and (width<768px) {
+    .DogsContainer{
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .Dog{
+        width: 60vw;
+    }
+}

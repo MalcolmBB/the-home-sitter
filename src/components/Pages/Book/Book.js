@@ -344,7 +344,8 @@ function Book(props) {
                                         preferredContact: event.target.value
                                     }))} error={emailParams.preferredError !== ""} helperText={emailParams.preferredError}>
                                     {
-                                        preferredContact.map((option) => (<MenuItem style={{
+                                        preferredContact.map((option) => (<MenuItem
+                                            className="MenuItem" style={{
                                                 fontFamily: "Alice, serif"
                                             }} key={option.value} value={option.value}>
                                             {option.label}
@@ -414,7 +415,11 @@ function Book(props) {
                         <TextField className="timeInput" label="Number of hours" placeholder="1" type='number' inputProps={{
                                 max: 10,
                                 min: 1
-                            }} required fullWidth value={numHours} onChange={(event) => (
+                            }} required fullWidth value={numHours}
+                            onChange={(event) => {
+                                setHours(event.target.value);
+                            }}
+                            onBlur={(event) => (
                                 event.target.value > 10
                                 ? setHours(10)
                                 : event.target.value < 1
@@ -426,7 +431,7 @@ function Book(props) {
                     <h2 className="submitLabel">Please see the estimated price below and confirm the booking</h2>
                     <div className="estimatedPriceContainer detailsInput">
                         <h3 className="estimatedPriceLabel">*Estimated price:</h3>
-                        <Input className="estimatedPriceDisplay" label="*Estimated price:" disabled startAdornment={<InputAdornment position = "start" > R</InputAdornment>} value={estimatedPrice}></Input>
+                        <Input className="estimatedPriceDisplay" disabled startAdornment={<InputAdornment position = "start" > R</InputAdornment>} value={estimatedPrice}></Input>
                     </div>
                     <h4 className="priceEstimateNotice">*Please note that the estimated price provided may change.</h4>
                     <Button type="Submit" classes="button bSubmitBooking" value="Confirm booking" onClick={handleSubmit}></Button>
@@ -434,9 +439,7 @@ function Book(props) {
                 <Dialog className="dialogConfirm" open={showDialog}>
                     <h3 className="dialogConfirmHeader">Booking request confirmation</h3>
                     <p className="dialogConfirmParagraph">
-                        Please confirm that you, {emailParams.name}, would like to book The HomeSitter for {emailParams.service}
-                        from {emailParams.startDate}
-                        till {emailParams.endDate}.
+                        Please confirm that you, {emailParams.name}, would like to book The HomeSitter for {emailParams.service} from {emailParams.startDate} till {emailParams.endDate}.
                         <br/>
                         <br/>
                         The estimated price is R{emailParams.estimatedPrice}.

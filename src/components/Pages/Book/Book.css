@@ -295,3 +295,157 @@
 .dialogSendConfirmation{
     font-size: 1.6rem;
 }
+
+@media only screen and (width<768px) {
+    .BookContainer *{
+        flex-direction: column;
+    }
+
+    .detailsContainer{
+        margin: 0;
+    }
+
+    .detailsInnerContainer{
+        gap: 2rem;
+    }
+
+    .detailsLabel{
+        font-size: 4rem;
+    }
+
+    .detailsForm{
+        gap: 4rem;
+    }
+
+    .detailsInput{
+        max-width: 90vw;
+    }
+
+    .detailsInput * {
+        font-size: 3rem!important;
+    }
+
+    .MenuItem{
+        font-size: 3rem!important;
+    }
+
+    .serviceContainer{
+        margin: 0;
+        margin-top: 5rem;
+    }
+
+    .serviceLabel{
+        font-size: 4rem!important;
+    }
+
+    .serviceOption{
+        max-width: 90vw;
+        flex-direction: row;
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+
+    .contentWrap > h3{
+        font-size: 2.5rem;
+    }
+
+    .contentWrap > h5{
+        margin-top: .2rem;
+        font-size: 1.4rem;
+    }
+
+    .contentWrap > p{
+        margin-top: .5rem;
+        font-size: 1.8rem;
+    }
+
+    .dateContainer{
+        margin: 0;
+    }
+
+    .dateLabel{
+        font-size: 4rem!important;
+    }
+
+    .dateInnerContainer * {
+        flex-direction: row;
+    }
+
+    .dateRange{
+        width: 80vw;
+    }
+
+    .dateRange * {
+        font-size: 2rem!important;
+    }
+
+    .timeContainer{
+        margin: 0;
+        margin-top: 5rem;
+    }
+
+    .timeLabel{
+        font-size: 4rem;
+    }
+
+    .submitContainer{
+        margin: 0;
+    }
+
+    .submitLabel{
+        font-size: 4rem;
+    }
+
+    .estimatedPriceContainer{
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .estimatedPriceDisplay{
+        flex-direction: row;
+    }
+
+    .estimatedPriceDisplay *{
+        flex-direction: row;
+    }
+
+    .priceEstimateNotice{
+        font-size: 2rem;
+    }
+
+    .bSubmitBooking{
+        font-size: 3rem;
+    }
+
+    .dialogConfirm .MuiDialog-paper{
+        max-width: 90vw;
+    }
+
+    .dialogConfirmHeader{
+        font-size: 4rem;
+    }
+
+    .dialogConfirmParagraph{
+        font-size: 2.5rem;
+        line-height: calc(2.5rem * 1.6);
+    }
+
+    .buttonContainerDialog{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .dialogButton{
+        font-size: 3rem;
+    }
+
+    .dialogSend .MuiDialog-paper{
+        max-width: 90vw;
+    }
+
+    .dialogSendConfirmation{
+        font-size: 3rem;
+    }
+}

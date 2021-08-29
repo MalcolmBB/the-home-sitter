@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../../header/header.js';
 import Footer from '../../footer/footer.js';
 import Button from '../../button/button.js';
@@ -13,7 +13,19 @@ import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
 function Testimonials(props) {
-    const [testimonialsOpen, setTestimonialsOpen] = useState(props.testimonialsOpen);
+    const [testimonialsOpen, setTestimonialsOpen] = useState(false);
+
+    useEffect(() => {
+        if (props.testimonialsOpen === "fromHome") {
+            setTimeout(() => {
+                setTestimonialsOpen(true);
+            },1000);
+        }
+
+        return () => {
+          props.handleTestimonialsOpen();
+        };
+    }, []);
 
     const [testimonialsActiveCard, setTestimonialsActiveCard] = useState(props.testimonialsActiveCard);
 

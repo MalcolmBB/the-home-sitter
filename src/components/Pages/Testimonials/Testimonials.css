@@ -39,8 +39,6 @@
 .Dialog .MuiDialog-paper{
     border-radius: 2rem!important;
     font-family: "Alice", serif!important;
-    font-size: 1.1rem!important;
-    line-height: calc(1.1rem * 1.6);
     color: var(--pDark);
     background: linear-gradient(to right, var(--pDark) 50%, var(--light) 50%);
 }
@@ -61,6 +59,8 @@
     background: var(--light);
     color: var(-pDark);
     border-radius: 2rem 2rem 0 2rem;
+    font-size: 1.1rem;
+    line-height: calc(1.1rem * 1.6);
 }
 
 .DialogDetails{
@@ -79,7 +79,7 @@
 }
 
 .dialogNameHeader{
-    font-size: 2rem!important;
+    font-size: 2rem;
 }
 
 .dialogDateHeader{
@@ -96,4 +96,42 @@
 .bClose > svg{
     width: 3rem!important;
     height: 3rem!important;
+}
+
+@media only screen and (width<768px) {
+    .TestimonialsHeader{
+        font-size: 5rem;
+    }
+
+    .TestimonialsHelp{
+        font-size: 2.5rem;
+    }
+
+    .DialogContent{
+        font-size: 3rem;
+        line-height: calc(3rem * 1.6);
+    }
+
+    .DialogDetails{
+        font-size: 2rem;
+    }
+
+    .dialogNameHeader{
+        font-size: 4rem;
+    }
+
+    .DialogQuote{
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .bClose{
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .bClose > svg{
+        width: 6rem!important;
+        height: 6rem!important;
+    }
 }

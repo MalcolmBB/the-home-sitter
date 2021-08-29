@@ -67,3 +67,14 @@
         transform: rotate(0) scale(0);
     }
 }
+
+@media only screen and (width<768px) {
+    .CatsContainer{
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .Cat{
+        width: 60vw;
+    }
+}

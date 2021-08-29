@@ -195,7 +195,7 @@ class Contact extends React.Component {
                 ></Button>
                 </form>
                 <Dialog open={this.state.open}>
-                    <DialogTitle className="DialogTitle">Your message has been sent!</DialogTitle>
+                    <h2 className="DialogTitle">Your message has been sent!</h2>
                 </Dialog>
             </div>
         );

@@ -27,6 +27,7 @@ function Home(props) {
     document.activeElement.blur();
   };
 
+
   return (
     <div className="HomeDiv MainPageDiv">
       <SimpleBar style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
@@ -118,7 +119,7 @@ function Home(props) {
             <h1 className="TestimonialCarouselLabel">Testimonial summaries</h1>
             <Swiper
               spaceBetween={30}
-              slidesPerView={3}
+              slidesPerView={(window.matchMedia("(max-width:768px)").matches)? 1 : 3}
               centeredSlides={true}
               speed={2500}
               loop={true}
@@ -133,6 +134,7 @@ function Home(props) {
                   <Card
                     classes="Card homeCard"
                     name={data.name}
+                    date={data.date}
                     summary={data.summary}
                     paragraph={data.paragraph}
                     linkTo="/Testimonials"
@@ -142,7 +144,7 @@ function Home(props) {
                             name: data.name,
                             paragraph: data.paragraph
                         }),
-                        props.handleTestimonialsOpen(true)
+                        props.handleTestimonialsOpen("fromHome")
                     )}
                   ></Card>
                 </SwiperSlide>

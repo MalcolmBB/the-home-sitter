@@ -122,3 +122,33 @@
 .activeTab{
     display: flex;
 }
+
+@media only screen and (width<768px) {
+    .AdminTestimonialsHeader{
+        font-size: 5rem;
+    }
+
+    .AdminLogin{
+        width: 90vw;
+    }
+
+    .AdminLogin *{
+        font-size: 3rem!important;
+    }
+
+    .AdminLoginPrompt{
+        font-size: 3rem;
+    }
+
+    .EnterTestimonial{
+        width: 90vw;
+    }
+
+    .bTabSelection{
+        font-size: 2rem;
+    }
+
+    .TabView *{
+        font-size: 3rem!important;
+    }
+}

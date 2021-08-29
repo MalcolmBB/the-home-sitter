@@ -113,31 +113,48 @@
     transition: all 1.6s ease;
 }
 
+.CarouselCardContainer .swiper-slide .homeCard *{
+    transition: all 1.6s ease;
+}
+
 .CarouselCardContainer .swiper-slide-active .homeCard{
+    background: linear-gradient(to right, var(--pDark) 50%, var(--light) 50%);
+}
+
+.CarouselCardContainer .swiper-slide-active .homeCard .content{
+    background: var(--light);
+    color: var(--pDark);
+}
+
+.CarouselCardContainer .swiper-slide-active .homeCard .content>svg{
+    fill: var(--pDark);
+}
+
+.CarouselCardContainer .swiper-slide-active .homeCard .details{
     background: var(--pDark);
     color: var(--light);
 }
 
-.CarouselCardContainer .swiper-slide .homeDisplayMore{
+/* .CarouselCardContainer .swiper-slide .homeDisplayMore{
     transition: all 1.6s ease;
     padding: 2rem;
     margin-top: -2rem;
     padding-top: 4rem;
     transform-origin: top;
     transform: scaleY(0);
-}
+} */
 
-.CarouselCardContainer .swiper-slide-active .homeDisplayMore{
-    /* transition: all 1.6s ease 1.6s;
-    transform: scaleY(1); */
-    /* box-shadow: 0 0 1.5rem 0 rgba(46, 87, 107, 0.5); */
+/* .CarouselCardContainer .swiper-slide-active .homeDisplayMore{
+    transition: all 1.6s ease 1.6s;
+    transform: scaleY(1);
+    box-shadow: 0 0 1.5rem 0 rgba(46, 87, 107, 0.5);
     animation: ShowHomeMore 7s ease;
     padding: 2rem;
     margin-top: -2rem;
     padding-top: 4rem;
-}
+} */
 
-@keyframes ShowHomeMore {
+/* @keyframes ShowHomeMore {
     22.85%{
         box-shadow:none;
         transform: scaleY(0);
@@ -150,17 +167,17 @@
         transform: scaleY(0);
         box-shadow: none;
     }
-}
+} */
 
 .homeCard{
     box-shadow: 0 0 1.5rem 0 rgba(46, 87, 107, 0.5);
     /* width: 100vw; */
 }
 
-.homeDisplayMore{
-    /* box-shadow: 0 0 1.5rem 0 rgba(46, 87, 107, 0.5); */
-    /* width: 100vw; */
-}
+/* .homeDisplayMore{
+    box-shadow: 0 0 1.5rem 0 rgba(46, 87, 107, 0.5);
+    width: 100vw;
+} */
 
 /* Swiper Styling */
 .swiper-container{
@@ -206,7 +223,7 @@
     margin-right: 5rem;
     font-size: 4rem;
     color: var(--pDark);
-    text-shadow: 0.3rem 0.3rem 0.2rem var(--light);
+    text-shadow: var(--textShadowOffset) var(--textShadowOffset) var(--textShadowValue) var(--light);
 }
 
 .bBookLanding{
@@ -219,4 +236,74 @@
 
 .bBookLanding::before, .bBookLanding::after{
     background: var(--primary);
+}
+
+
+@media only screen and (width<768px) {
+    :root{
+        font-size: 2vw;
+        --textShadowOffset: 0.6rem;
+        --textShadowValue: 0.4rem;
+    }
+
+    .CTAContainer{
+        right: -7.5%;
+        top: 20%;
+    }
+
+    .LandingHeader{
+        font-size: 6rem;
+        max-width: 100vw;
+        margin-right: 0;
+    }
+
+    .bBookLanding{
+        font-size: 3rem;
+    }
+
+    .AboutLabel{
+        font-size: 5rem;
+    }
+
+    .AboutMain{
+        flex-direction: column;
+    }
+
+    .AboutMainContent{
+        font-size: 3rem;
+        line-height: 5rem;
+    }
+
+    .AboutMain > .swiper-container{
+        width: 80vw;
+    }
+
+    .aboutImage{
+        height: 60vw;
+        min-width: 80vw;
+        max-width: 80vw;
+    }
+
+    .CarouselLabel{
+        font-size: 5rem;
+        margin-bottom: 5rem;
+    }
+
+    .Image{
+        height: 60vw;
+        min-width: 80vw;
+        max-width: 80vw;
+    }
+
+    .bGalleryMain{
+        font-size: 3rem;
+    }
+
+    .TestimonialCarouselLabel{
+        font-size: 5rem;
+    }
+
+    .bTestimonialsMain{
+        font-size: 3rem;
+    }
 }

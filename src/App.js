@@ -29,6 +29,12 @@ function App() {
   const [gallery, setGallery] = useState(["dd"]);
   const [aboutGallery, setAboutGallery] = useState(["dd"]);
 
+  let vh = useMemo(() => (window.innerHeight * 0.01), [window.innerHeight]);
+
+  useEffect(() => {
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }, [vh])
+
   useEffect(() => {
     const source = axios.CancelToken.source();
 
@@ -138,6 +144,7 @@ function App() {
                           testimonials={testimonials}
                           testimonialsOpen={testimonialsOpen}
                           testimonialsActiveCard={testimonialsActiveCard}
+                          handleTestimonialsOpen={handleSetTestimonialsOpen}
                       />
                     )}
                   />

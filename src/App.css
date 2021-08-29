@@ -11,6 +11,9 @@
     --dark: hsl(0, 0%, 0%);
     --grey: hsl(0, 0%, 35%);
     font-size: 1vw;
+    --textShadowOffset: 0.3rem;
+    --textShadowValue: 0.2rem;
+    --vh: 1vh;
 }
 
 *{

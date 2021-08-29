@@ -22,6 +22,9 @@ import "simplebar/dist/simplebar.min.css";
 var passwordHash = require("password-hash");
 const assert = require("assert");
 
+const USERNAME_ERROR = "Invalid username or password";
+const PASSWORD_ERROR = "Invalid password";
+
 function AdminTestimonials() {
   const [adminDetails, setAdminDetails] = useState({
     username: "",
@@ -114,7 +117,24 @@ function AdminTestimonials() {
       setLoggedIn(true);
       return user;
     } catch (err) {
-      console.error("Failed to log in", err);
+        if (err.message.includes("Invalid username")){
+            setAdminDetails({
+                username: "",
+                usernameError: USERNAME_ERROR,
+                password: "",
+                passwordError: USERNAME_ERROR
+            })
+        }
+        else if (err.message.includes("Invalid password")){
+            setAdminDetails({
+                ...adminDetails,
+                password: "",
+                passwordError: PASSWORD_ERROR
+            })
+        }
+        else {
+            console.error("Failed to log in", err);
+        }
     }
   }
 
@@ -133,10 +153,20 @@ function AdminTestimonials() {
     const client = app.currentUser.mongoClient("mongodb-atlas");
     const TestText = client.db("TheHomeSitter").collection("Testimonials");
     TestText.insertOne(newSubmit)
-      .then((result) =>
-        console.log(
-          `Successfully inserted item with _id: ${result.insertedId}`
-        )
+      .then((result) => {
+        console.log(`Successfully inserted item`);
+        setTestDetails({
+            name: "",
+            date: "",
+            summary: "",
+            paragraph: "",
+            nameError: "",
+            dateError: "",
+            summaryError: "",
+            paragraphError: "",
+        });
+        document.activeElement.blur();
+        }
       )
       .catch((err) => console.error(`Failed to insert item: ${err}`));
   };
@@ -197,6 +227,7 @@ function AdminTestimonials() {
                   setAdminDetails({
                     ...adminDetails,
                     username: event.target.value,
+                    usernameError: ""
                   });
                 }}
                 error={adminDetails.usernameError !== ""}
@@ -212,6 +243,7 @@ function AdminTestimonials() {
                   setAdminDetails({
                     ...adminDetails,
                     password: event.target.value,
+                    passwordError: ""
                   });
                 }}
                 error={adminDetails.passwordError !== ""}
@@ -417,7 +449,3 @@ function AdminTestimonials() {
 }
 
 export default AdminTestimonials;
-
-// Hello World #Name#
-// Malcolm Baatjies
-// #/Name#

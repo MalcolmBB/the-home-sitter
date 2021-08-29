@@ -32,3 +32,13 @@
     object-fit: contain;
     max-width: 30vw;
 }
+
+@media only screen and (width<768px) {
+    .GalleryHeader{
+        font-size: 5rem;
+    }
+
+    .GalleryImage{
+        max-width: 90vw;
+    }
+}

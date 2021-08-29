@@ -118,8 +118,10 @@
     background: var(--primary);
 }
 
-.DialogTitle *{
+.DialogTitle{
+    margin: 2rem;
     font-size: 1.2rem;
+    color: var(--pDark);
 }
 
 .bSubmit{
@@ -130,4 +132,58 @@
 .bDogLogo{
     background: none;
     border: none;
+}
+
+@media only screen and (width<768px) {
+    :root{
+        --iconSize: 20vw;
+        --inputFontSize: 3rem;
+    }
+
+    .footerContainer{
+        padding: 0;
+        padding-top: 3rem;
+    }
+
+    .footerContainer *{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .LogoAndLinksContainer{
+        margin: 0;
+        gap: 5rem;
+        flex-direction: row;
+    }
+
+    .LogoAndLinksContainer * {
+        width: 20vw;
+    }
+
+    .contactContainer{
+        margin-right: 0;
+        font-size: 2rem;
+        gap: 2rem;
+    }
+
+    .contactContainer > form {
+        gap: 2rem;
+    }
+
+    .bFooterSubmit{
+        font-size: 3rem;
+    }
+
+    .DialogTitle{
+        font-size: 5rem;
+    }
+
+    .MadeBy{
+        font-size: 2rem;
+    }
+
+    .LegalLinksContainer{
+        font-size: 2rem;
+    }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import Clamp from 'react-multiline-clamp';
 import {Link} from 'react-router-dom';
 import './Card.css';
 

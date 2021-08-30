@@ -108,8 +108,8 @@
     }
 
     .DialogContent{
-        font-size: 3rem;
-        line-height: calc(3rem * 1.6);
+        font-size: 2.5rem;
+        line-height: calc(2.5rem * 1.6);
     }
 
     .DialogDetails{
@@ -117,7 +117,7 @@
     }
 
     .dialogNameHeader{
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
 
     .DialogQuote{

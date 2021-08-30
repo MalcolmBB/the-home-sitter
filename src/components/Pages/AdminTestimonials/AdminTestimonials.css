@@ -133,7 +133,7 @@
     }
 
     .AdminLogin *{
-        font-size: 3rem!important;
+        font-size: 2.5rem!important;
     }
 
     .AdminLoginPrompt{
@@ -149,6 +149,6 @@
     }
 
     .TabView *{
-        font-size: 3rem!important;
+        font-size: 2.5rem!important;
     }
 }

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import Button from "../../button/button";
 
 // Other imports
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
@@ -19,7 +18,6 @@ import "./AdminTestimonials.css";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
-var passwordHash = require("password-hash");
 const assert = require("assert");
 
 const USERNAME_ERROR = "Invalid username or password";

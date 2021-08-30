@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect} from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
   Redirect,
@@ -15,6 +15,7 @@ import Testimonials from "./components/Pages/Testimonials/Testimonials";
 import Book from "./components/Pages/Book/Book";
 import Loading from "./components/Pages/LoadingPage/loading";
 import AdminTestimonials from "./components/Pages/AdminTestimonials/AdminTestimonials";
+import PrivacyPolicy from "./components/Pages/PrivacyPolicy/PrivacyPolicy";
 
 import * as Realm from "realm-web";
 import axios from "axios";
@@ -29,11 +30,15 @@ function App() {
   const [gallery, setGallery] = useState(["dd"]);
   const [aboutGallery, setAboutGallery] = useState(["dd"]);
 
-  let vh = useMemo(() => (window.innerHeight * 0.01), [window.innerHeight]);
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-  useEffect(() => {
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }, [vh])
+  window.addEventListener('resize', () => {
+      if (vh !== window.innerHeight * 0.01){
+          let vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+  });
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -105,19 +110,19 @@ function App() {
     }
 
   return (
-    <Router basename={process.env.PUBLIC_URL + '/'}>
+    <Router basename='/'>
       <React.Fragment>
         <Route
           component={({ location }) => (
             <TransitionGroup>
-              <CSSTransition key={location.key} timeout={500} classNames="PageChange">
+              <CSSTransition key={location.pathname} timeout={500} classNames="PageChange">
                 <Switch location={location}>
-                  <Redirect exact from='/' to='/Loading'/>
-                  <Route
-                    path='/Loading'
+                <Redirect exact from='/' to='/Home'/>
+                  {loading === true ? <Route
+                    path='/*'
                     exact
                     component={() => <Loading loading={loading}/>}
-                  />
+                  /> : null}
                   <Route
                     path='/Home'
                     exact
@@ -156,6 +161,7 @@ function App() {
                     )}
                   />
               <Route path='/Book' exact component={Book} />
+              <Route path='/PrivacyPolicy' exact component={PrivacyPolicy} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

@@ -38,7 +38,7 @@ function Footer(props){
                 <p>Made with ♥ by <a target="_blank" rel="noreferrer" href="https://malcolmbaatjies.me/#/">Malcolm Baatjies</a></p>
             </div>
             <div className="LegalLinksContainer">
-                <a className="PrivacyPolicy">Privacy Policy</a>
+                <Link className="PrivacyPolicy" to="/PrivacyPolicy">Privacy Policy</Link>
                 {pageName === "Testimonials" ? <Link tabIndex="-1" to="/AdminTestimonials"><p className="Copyright">©2021 Julia Boland. All rights reserved</p></Link> : <p className="Copyright">©2021 Julia Boland. All rights reserved</p>}
                 <a className="Sitemap">Sitemap</a>
             </div>

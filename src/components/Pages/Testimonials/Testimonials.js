@@ -4,8 +4,6 @@ import Footer from '../../footer/footer.js';
 import Button from '../../button/button.js';
 import Card from '../../Card/Card.js';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
 import './Testimonials.css';
 
 // Simplebar initialisation
@@ -46,14 +44,14 @@ function Testimonials(props) {
                             name={data.name}
                             summary={data.summary}
                             paragraph={data.paragraph}
-                            onClick={(event) => (
+                            onClick={(event) => {
                                 setTestimonialsActiveCard({
                                     date: data.date,
                                     name: data.name,
                                     paragraph: data.paragraph
-                                }),
+                                });
                                 setTestimonialsOpen(true)
-                            )}
+                            }}
                         ></Card>
                     ))}
                 </div>

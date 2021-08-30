@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import $ from 'jquery';
+import React from "react";
 
 function LoadingPaws(props) {
 

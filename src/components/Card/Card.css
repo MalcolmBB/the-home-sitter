@@ -86,8 +86,8 @@
 
 @media only screen and (width<768px) {
     .Card{
-        font-size: 3rem;
-        line-height: 5rem;
+        font-size: 2.5rem;
+        line-height: 4.5rem;
     }
 
     .Card > .content > svg {

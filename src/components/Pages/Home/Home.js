@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import Button from "../../button/button.js";
@@ -138,14 +138,14 @@ function Home(props) {
                     summary={data.summary}
                     paragraph={data.paragraph}
                     linkTo="/Testimonials"
-                    onClick={() => (
+                    onClick={() => {
                         props.handleTestimonialsActive({
                             date: data.date,
                             name: data.name,
                             paragraph: data.paragraph
-                        }),
+                        });
                         props.handleTestimonialsOpen("fromHome")
-                    )}
+                    }}
                   ></Card>
                 </SwiperSlide>
               ))}

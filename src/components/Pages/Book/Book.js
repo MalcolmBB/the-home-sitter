@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import Dogs from "./Dogs/Dogs";
@@ -6,7 +6,6 @@ import Cats from "./Cats/Cats";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -72,7 +71,7 @@ function Book(props) {
 
     const [estimatedPrice, setPrice] = useState(200);
 
-    const calculatePrice = () => {
+    const calculatePrice = useCallback(() => {
         switch (service) {
             case "houseSit":
                 setPrice(200 * numberOfDays);
@@ -89,7 +88,7 @@ function Book(props) {
             default:
                 setPrice(200);
         }
-    }
+    }, [service, numberOfDays, numHours]);
 
     useEffect(() => {
         if (service === "houseSit") {
@@ -138,6 +137,8 @@ function Book(props) {
                 break;
             case 7:
                 outputString += "Sunday the ";
+                break;
+            default:
                 break;
         }
 
@@ -258,12 +259,12 @@ function Book(props) {
             end_date: emailParams.endDate,
             estimated_price: emailParams.estimatedPrice
         };
-        // emailjs.send(
-        //     'service_tb7w78g',
-        //     'template_gtqy5gd',
-        //     templateParams,
-        //     'user_PFWwwo3BfFxRoPtwprZCw'
-        // )
+        emailjs.send(
+            'service_tb7w78g',
+            'template_gtqy5gd',
+            templateParams,
+            'user_PFWwwo3BfFxRoPtwprZCw'
+        )
         resetAll();
     }
 

@@ -12,18 +12,20 @@ import "simplebar/dist/simplebar.min.css";
 
 function Testimonials(props) {
     const [testimonialsOpen, setTestimonialsOpen] = useState(false);
+    const propsTestimonialsOpen = props.testimonialsOpen;
+    const handlePropsSetTest = props.handleTestimonialsOpen;
 
     useEffect(() => {
-        if (props.testimonialsOpen === "fromHome") {
+        if (propsTestimonialsOpen === "fromHome") {
             setTimeout(() => {
                 setTestimonialsOpen(true);
             },600);
         }
 
         return () => {
-          props.handleTestimonialsOpen();
+          handlePropsSetTest();
         };
-    }, []);
+    }, [propsTestimonialsOpen, handlePropsSetTest]);
 
     const [testimonialsActiveCard, setTestimonialsActiveCard] = useState(props.testimonialsActiveCard);
 

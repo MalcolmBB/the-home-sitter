@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import Button from "../../button/button";
+import Card from "../../Card/Card";
 
 // Other imports
 import TextField from "@material-ui/core/TextField";
@@ -31,9 +32,13 @@ function AdminTestimonials() {
     passwordError: "",
   });
 
+  const [adminTestimonials, setAdminTestimonials] = useState([]);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const [uploadTestimonials, setUploadTestimonials] = useState(true);
 
   const [pasteEmail, setPasteEmail] = useState(true);
 
@@ -56,6 +61,10 @@ function AdminTestimonials() {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const handleTestimonialDelete = (id) => {
+      app.currentUser.mongoClient("mongodb-atlas").db("TheHomeSitter").collection("Testimonials").deleteOne({"_id" : id});
   };
 
   const extractDetailsFromEmail = () => {
@@ -112,6 +121,11 @@ function AdminTestimonials() {
       const user = await app.logIn(credentials);
       // `App.currentUser` updates to match the logged in user
       assert(user.id === app.currentUser.id);
+
+      const client = app.currentUser.mongoClient("mongodb-atlas");
+      const TestimonialsLoaded = client.db("TheHomeSitter").collection("Testimonials");
+      setAdminTestimonials(await TestimonialsLoaded.find());
+
       setLoggedIn(true);
       return user;
     } catch (err) {
@@ -208,7 +222,14 @@ function AdminTestimonials() {
       <div className="AdminTestimonialsDiv">
         <Header></Header>
         <div className="AdminTestimonialsContainer">
-          <h1 className="AdminTestimonialsHeader">{loggedIn === false ? "Admin Login" : "Upload Testimonials"}</h1>
+          <div className="AdminTestimonialsHeaderDiv">
+              <h1 className="AdminTestimonialsHeader">{loggedIn === false ? "Admin Login" : (uploadTestimonials === true ? "Upload Testimonials" : "Edit Testimonials")}</h1>
+              {loggedIn === true ? <Button classes="bAdminLoginSubmit bSwitchAdminTestimonials" type="Submit"
+                  onClick={() => {
+                      setUploadTestimonials(!uploadTestimonials);
+                      document.activeElement.blur();
+                  }} value={uploadTestimonials === true ? "Edit" : "Upload"}></Button> : null}
+          </div>
           {loggedIn === false ? (
             <div className="AdminLogin">
               <h3 className="AdminLoginPrompt">Please log in to continue</h3>
@@ -261,15 +282,15 @@ function AdminTestimonials() {
               ></TextField>
               <Button
                 type="Submit"
-                classes={"bAdminLoginSubmit"}
+                classes="bAdminLoginSubmit"
                 onClick={() => {
                   handleAdminLogin();
                 }}
                 value="Log in"
               ></Button>
             </div>
-          ) : (
-            <div className="EnterTestimonial">
+        ) : ( uploadTestimonials === true ?
+            (<div className="EnterTestimonial">
               <div className="TabSelection">
                 <Button
                   type="Submit"
@@ -435,7 +456,27 @@ function AdminTestimonials() {
                   ></Button>
                 </div>
               </div>
+          </div>)
+            :
+            (<div className="EditTestimonials">
+            <div className="cardContainer">
+                {adminTestimonials.map((data, key) => (
+                    <Card
+                        key={key}
+                        type="AdminPage"
+                        classes="Card testCard adminCard"
+                        date={data.date}
+                        name={data.name}
+                        summary={data.summary}
+                        paragraph={data.paragraph}
+                        onClick={(event) => {}}
+                        deleteOnClick={() => {
+                            handleTestimonialDelete(data._id)
+                        }}
+                    ></Card>
+                ))}
             </div>
+            </div>)
           )}
         </div>
         <Footer></Footer>

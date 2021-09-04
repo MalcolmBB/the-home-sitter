@@ -6,6 +6,8 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Doggy from './doggy';
 
 
@@ -31,6 +33,10 @@ function MyIcon({name=null, link, style}){
             return (<CloseRoundedIcon style={style}/>);
         case "Doggy":
             return (<Doggy className="DogLogo"></Doggy>);
+        case "NextImage":
+            return (<NavigateNextIcon style={style}/>);
+        case "PrevImage":
+            return (<NavigateBeforeIcon style={style}/>);
         default:
             return null;
     }

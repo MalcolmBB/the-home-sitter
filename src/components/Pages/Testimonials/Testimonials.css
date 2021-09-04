@@ -57,7 +57,7 @@
 .DialogContent{
     padding: 2rem;
     background: var(--light);
-    color: var(-pDark);
+    color: var(--pDark);
     border-radius: 2rem 2rem 0 2rem;
     font-size: 1.1rem;
     line-height: calc(1.1rem * 1.6);

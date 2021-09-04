@@ -123,6 +123,36 @@
     display: flex;
 }
 
+.AdminTestimonialsHeaderDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bSwitchAdminTestimonials{
+    margin-right: 10rem;
+    font-size: 2rem;
+}
+
+.bDeleteAdmin{
+    position: absolute;
+    top: .25rem;
+    right: .5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform .6s ease;
+}
+
+.bDeleteAdmin:hover, .bDeleteAdmin:focus{
+    transform: scale(1.2);
+}
+
+.bDeleteAdmin *{
+    width: 3rem!important;
+    height: 3rem!important;
+    color: red;
+}
+
 @media only screen and (width<768px) {
     .AdminTestimonialsHeader{
         font-size: 5rem;

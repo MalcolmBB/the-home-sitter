@@ -31,6 +31,65 @@
     border-radius: 1rem;
     object-fit: contain;
     max-width: 30vw;
+    cursor: pointer;
+    transition: transform .6s ease;
+}
+
+.GalleryImage:hover, .GalleryImage:focus{
+    transform: scale(1.02);
+}
+
+.GalleryDialog .MuiDialog-paper{
+    border-radius: 2rem!important;
+    font-family: "Alice", serif!important;
+    color: var(--pDark);
+    overflow: hidden;
+}
+
+.GalleryDialog *{
+    font-family: "Alice", serif!important;
+}
+
+.GalleryOpenImage{
+    padding: 2rem;
+    background: var(--light);
+    color: var(--pDark);
+    border-radius: 2rem 2rem 0 2rem;
+    font-size: 1.1rem;
+    line-height: calc(1.1rem * 1.6);
+    display: flex;
+    flex-direction: column;
+}
+
+.headerOpenDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contentOpenDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: 80vh;
+}
+
+.buttonOpen{
+    border: none;
+    background: none;
+    color: var(--pDark);
+    transition: color .6s ease;
+    transition: transform .6s ease;
+}
+
+.buttonOpen:hover, .buttonOpen:focus{
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.GalleryImageOpen{
+    margin: 1rem;
+    border-radius: 1rem;
+    object-fit: contain;
 }
 
 @media only screen and (width<768px) {

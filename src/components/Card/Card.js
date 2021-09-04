@@ -49,20 +49,5 @@ if (type === "TestPage"){
         </Link>
     )
 }
-//
-// <div className="homeDisplayCard" onClick={onClick}>
-//     <div className={classes}>
-//         <h4>{name}</h4>
-//         <div>
-//             <p>{summary}</p>
-//         </div>
-//     </div>
-//     <div className="homeDisplayMore">
-//         <Clamp lines={5}>
-//             <p>{paragraph}</p>
-//         </Clamp>
-//     </div>
-// </div>
-
 
 export default Card;

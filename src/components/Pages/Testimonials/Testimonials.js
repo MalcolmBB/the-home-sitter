@@ -17,7 +17,7 @@ function Testimonials(props) {
         if (props.testimonialsOpen === "fromHome") {
             setTimeout(() => {
                 setTestimonialsOpen(true);
-            },1000);
+            },600);
         }
 
         return () => {

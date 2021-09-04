@@ -5,7 +5,6 @@ function HouseName(props) {
     <svg
       className={props.classes}
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsBx="https://boxy-svg.com"
       viewBox="1.829 -1.829 806.04 230.539"
     >
       <path
@@ -36,7 +35,7 @@ function HouseName(props) {
         rx="3.047"
         ry="4.108"
         transform="rotate(-46.512 156.43 83.555) skewX(2.017)"
-        bxOrigin="0.501 0.49"
+
       ></ellipse>
       <ellipse
           className="topPaw1"
@@ -74,7 +73,7 @@ function HouseName(props) {
         rx="3.779"
         ry="4.584"
         transform="rotate(-1.514 -1037.603 -618.396) skewX(2.598)"
-        bxOrigin="0.501 0.49"
+
       ></ellipse>
       <ellipse
           className="topPaw2"
@@ -112,7 +111,7 @@ function HouseName(props) {
         rx="1.81"
         ry="2.301"
         transform="rotate(-174.176 380.61 117.334) skewX(1.8)"
-        bxOrigin="0.501 0.49"
+
       ></ellipse>
       <ellipse
           className="bottomPaw1"
@@ -150,7 +149,7 @@ function HouseName(props) {
         rx="2.082"
         ry="2.804"
         transform="rotate(138.28 368.002 218.857) skewX(1.968)"
-        bxOrigin="0.501 0.49"
+
       ></ellipse>
       <ellipse
           className="bottomPaw2"
@@ -188,7 +187,7 @@ function HouseName(props) {
         rx="2.048"
         ry="3.141"
         transform="rotate(159.488 375.4 185.65) skewX(2.457)"
-        bxOrigin="0.501 0.49"
+
       ></ellipse>
       <ellipse
           className="bottomPaw3"
@@ -226,7 +225,7 @@ function HouseName(props) {
         rx="2.56"
         ry="3.853"
         transform="rotate(102.497 336.346 344.926) skewX(-13.829)"
-        bxOrigin="0.501 0.49"
+
       ></ellipse>
       <ellipse
           className="bottomPaw4"

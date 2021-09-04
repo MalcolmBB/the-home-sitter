@@ -136,10 +136,6 @@ function AdminTestimonials() {
     }
   }
 
-  // loginCustomFunction({ username: "JuliaBolandAdmin" , password :"JuliaBoland1999"}).then((user) => {
-  //   console.log("Successfully logged in!", "JuliaBoland1999");
-  // });
-
   const handleAdminLogin = () => {
     loginCustomFunction({
       username: adminDetails.username,
@@ -170,10 +166,12 @@ function AdminTestimonials() {
   };
 
   const handleTestimonialSubmit = () => {
-    const paragraphArray = testDetails.paragraph.split("\n");
+    let paragraphArray = testDetails.paragraph.split("\n");
 
-    if (paragraphArray[paragraphArray.length - 1] === "") {
-      paragraphArray.pop();
+    paragraphArray = paragraphArray.filter(function(e){return e});
+
+    for (let i = 1; i < paragraphArray.length; ++i){
+        paragraphArray[i] = "\n" + paragraphArray[i];
     }
 
     const newSubmit = {
@@ -210,7 +208,7 @@ function AdminTestimonials() {
       <div className="AdminTestimonialsDiv">
         <Header></Header>
         <div className="AdminTestimonialsContainer">
-          <h1 className="AdminTestimonialsHeader">Upload Testimonials</h1>
+          <h1 className="AdminTestimonialsHeader">{loggedIn === false ? "Admin Login" : "Upload Testimonials"}</h1>
           {loggedIn === false ? (
             <div className="AdminLogin">
               <h3 className="AdminLoginPrompt">Please log in to continue</h3>

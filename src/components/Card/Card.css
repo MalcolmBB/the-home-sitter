@@ -1,11 +1,13 @@
 .Card{
-    /* background: var(--light); */
-    /* color: var(--dark); */
-    /* padding: 2rem; */
     border-radius: 2rem;
     position: relative;
     z-index: 4;
     cursor: pointer;
+    transition: transform .6s ease;
+}
+
+.Card:hover, .Card:focus{
+    transform: scale(1.1);
 }
 
 .nameHeader{
@@ -75,6 +77,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 5rem;
 }
 
 .quote{

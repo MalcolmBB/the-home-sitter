@@ -74,10 +74,8 @@ function App() {
         }
       }
 
-      setTimeout(() => {
-          app.currentUser.logOut();
+        app.currentUser.logOut();
         setLoading(false);
-      }, 1000);
     }
 
     if (loading) {

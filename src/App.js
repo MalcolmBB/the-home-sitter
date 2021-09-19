@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
@@ -108,12 +108,12 @@ function App() {
     }
 
   return (
-    <Router basename='/'>
+    <Router basename={process.env.PUBLIC_URL + "/"}>
       <React.Fragment>
         <Route
           component={({ location }) => (
             <TransitionGroup>
-              <CSSTransition key={location.pathname} timeout={500} classNames="PageChange">
+              <CSSTransition key={location.key} timeout={500} classNames="PageChange">
                 <Switch location={location}>
                 <Redirect exact from='/' to='/Home'/>
                   {loading === true ? <Route

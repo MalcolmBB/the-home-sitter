@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import Button from "../../button/button";
@@ -10,6 +10,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Dialog from '@material-ui/core/Dialog';
 import * as Realm from "realm-web";
 
 // CSS imports
@@ -113,6 +114,12 @@ function AdminTestimonials() {
   const React_App_ID = "thehomesitter-ainwl";
   const app = new Realm.App({ id: React_App_ID });
 
+  async function loadTestimonials(){
+      const client = app.currentUser.mongoClient("mongodb-atlas");
+      const TestimonialsLoaded = client.db("TheHomeSitter").collection("Testimonials");
+      setAdminTestimonials(await TestimonialsLoaded.find());
+  }
+
   async function loginCustomFunction(payload) {
     // Create a Custom Function credential
     const credentials = Realm.Credentials.function(payload);
@@ -122,9 +129,7 @@ function AdminTestimonials() {
       // `App.currentUser` updates to match the logged in user
       assert(user.id === app.currentUser.id);
 
-      const client = app.currentUser.mongoClient("mongodb-atlas");
-      const TestimonialsLoaded = client.db("TheHomeSitter").collection("Testimonials");
-      setAdminTestimonials(await TestimonialsLoaded.find());
+      loadTestimonials();
 
       setLoggedIn(true);
       return user;
@@ -173,6 +178,7 @@ function AdminTestimonials() {
             summaryError: "",
             paragraphError: "",
         });
+        loadTestimonials();
         document.activeElement.blur();
         }
       )
@@ -209,6 +215,15 @@ function AdminTestimonials() {
       paragraphError: "",
     });
   };
+
+  const [confirmDeleteDialog, setConfirmDeleteDialog] = useState(false);
+
+  const [deleteID, setDeleteID] =  useState("");
+
+  const nameRef = useRef(null);
+  const dateRef = useRef(null);
+  const summaryRef = useRef(null);
+  const paragraphRef = useRef(null);
 
   return (
     <SimpleBar
@@ -375,8 +390,17 @@ function AdminTestimonials() {
                         });
                       }
                     }}
+                    onBlur={(event) => {
+                        if (event.target.value === ""){
+                            setTestDetails({
+                                ...testDetails,
+                                nameError: "Please enter a valid name!"
+                            })
+                        }
+                    }}
                     error={testDetails.nameError !== ""}
                     helperText={testDetails.nameError}
+                    inputRef={nameRef}
                   ></TextField>
                   <TextField
                     className="enterDetailsDate"
@@ -397,8 +421,17 @@ function AdminTestimonials() {
                         });
                       }
                     }}
+                    onBlur={(event) => {
+                        if (event.target.value === ""){
+                            setTestDetails({
+                                ...testDetails,
+                                dateError: "Please enter a valid date!"
+                            })
+                        }
+                    }}
                     error={testDetails.dateError !== ""}
                     helperText={testDetails.dateError}
+                    inputRef={dateRef}
                   ></TextField>
                   <TextField
                     className="enterDetailsSummary"
@@ -420,8 +453,17 @@ function AdminTestimonials() {
                         });
                       }
                     }}
+                    onBlur={(event) => {
+                        if (event.target.value === ""){
+                            setTestDetails({
+                                ...testDetails,
+                                summaryError: "Please enter a valid summary!"
+                            })
+                        }
+                    }}
                     error={testDetails.summaryError !== ""}
                     helperText={testDetails.summaryError}
+                    inputRef={summaryRef}
                   ></TextField>
                   <TextField
                     className="enterDetailsParagraph"
@@ -443,14 +485,41 @@ function AdminTestimonials() {
                         });
                       }
                     }}
+                    onBlur={(event) => {
+                        if (event.target.value === ""){
+                            setTestDetails({
+                                ...testDetails,
+                                paragraphError: "Please enter a valid paragraph!"
+                            })
+                        }
+                    }}
                     error={testDetails.paragraphError !== ""}
                     helperText={testDetails.paragraphError}
+                    inputRef={paragraphRef}
                   ></TextField>
                   <Button
                     type="Submit"
                     classes={"bEnterDetailsSubmit bAdminLoginSubmit"}
                     onClick={() => {
-                      handleTestimonialSubmit();
+                        if (testDetails.name === ""){
+                            setTestDetails({...testDetails, nameError: "Please enter a valid name!"});
+                            nameRef.current.focus();
+                        }
+                        else if (testDetails.date === ""){
+                            setTestDetails({...testDetails, dateError: "Please enter a valid date!"});
+                            dateRef.current.focus();
+                        }
+                        else if (testDetails.summary === ""){
+                            setTestDetails({...testDetails, summaryError: "Please enter a valid summary!"});
+                            summaryRef.current.focus();
+                        }
+                        else if (testDetails.paragraph === ""){
+                            setTestDetails({...testDetails, paragraphError: "Please enter a valid paragraph!"});
+                            paragraphRef.current.focus();
+                        }
+                        else {
+                            handleTestimonialSubmit();
+                        }
                     }}
                     value="Confirm and Submit"
                   ></Button>
@@ -471,11 +540,35 @@ function AdminTestimonials() {
                         paragraph={data.paragraph}
                         onClick={(event) => {}}
                         deleteOnClick={() => {
-                            handleTestimonialDelete(data._id)
+                            setDeleteID(data._id);
+                            setConfirmDeleteDialog(true);
                         }}
                     ></Card>
                 ))}
             </div>
+            <Dialog className="confirmDeleteDialog" open={confirmDeleteDialog}>
+                <h2 className="confirmDeleteDialogTitle">Are you sure you want to delete the testimonial?
+                </h2>
+                <div className="buttonContainerDialog">
+                    <Button type="Submit" value="Cancel" classes="dialogButton bCancelBooking" onClick={() => {
+                            setConfirmDeleteDialog(false)
+                        }}
+                    ></Button>
+                <Button type="Submit" value="Delete" classes="button dialogButton bSendBooking bSubmitBooking bDeleteConfirm" onClick={() => {
+                    setTimeout(() => {
+                        handleTestimonialDelete(deleteID);
+                        setTimeout(() => {
+                            setConfirmDeleteDialog(false);
+                            setDeleteID("");
+                            setTimeout(() => {
+                                loadTestimonials();
+                            }, 500);
+                        }, 100);
+                    }, 400);
+                }}
+                    ></Button>
+                </div>
+            </Dialog>
             </div>)
           )}
         </div>

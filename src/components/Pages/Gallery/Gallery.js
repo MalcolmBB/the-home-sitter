@@ -5,6 +5,7 @@ import Button from '../../button/button.js';
 import {Image} from 'cloudinary-react';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import Dialog from '@material-ui/core/Dialog';
+import ArrowKeysReact from 'arrow-keys-react';
 import './Gallery.css';
 
 // Simplebar initialisation
@@ -15,6 +16,25 @@ function Gallery(props){
 
     const [activeImage, setActiveImage] = useState(1);
     const [openImage, setOpenImage] = useState(false);
+
+    ArrowKeysReact.config({
+      left: () => {
+          let tempNext = activeImage-1;
+          if (tempNext < 0){
+              tempNext = props.gallery.length-1;
+          }
+          document.activeElement.blur();
+          setActiveImage(tempNext);
+      },
+      right: () => {
+          let tempNext = activeImage + 1;
+          if (tempNext > props.gallery.length-1){
+              tempNext = 0;
+          }
+          document.activeElement.blur();
+          setActiveImage(tempNext);
+      }
+    });
 
     return (
         <SimpleBar className="MainPageDiv" style={{ height: "100vh" }} forceVisible="y" autoHide={false}>
@@ -47,6 +67,7 @@ function Gallery(props){
                     onClose={(event) => {
                         setOpenImage(false)
                     }}
+                    {...ArrowKeysReact.events}
                 >
                     <div className="GalleryOpenImage">
                         <div className="headerOpenDiv">
@@ -67,6 +88,7 @@ function Gallery(props){
                                     if (tempNext < 0){
                                         tempNext = props.gallery.length-1;
                                     }
+                                    document.activeElement.blur();
                                     setActiveImage(tempNext);
                                 }}
                             ></Button>
@@ -84,6 +106,7 @@ function Gallery(props){
                                     if (tempNext > props.gallery.length-1){
                                         tempNext = 0;
                                     }
+                                    document.activeElement.blur();
                                     setActiveImage(tempNext);
                                 }}
                             ></Button>
